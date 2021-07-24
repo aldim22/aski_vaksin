@@ -90,7 +90,10 @@ class UploadController extends Controller
            if ($checksubmit ==true) {
                return response()->json([
                 'success'=>'ada',
-                'name'=>$check->name
+                'name'=>$check->name,
+                'qr'=>$checksubmit->qr,
+                'nik'=>$check->nik,
+                'umur'=>$check->umur
             ]);
            }else{
                 QrCode::generate($request->nik, storage_path('app/public/qrcodes/'.$request->nik.'.svg'));
@@ -100,7 +103,13 @@ class UploadController extends Controller
                     'created_at'=>Carbon::now(),
                     'updated_at'=>Carbon::now(),
                 ]);
-                return response()->json(['success'=>'berhasil']);
+                return response()->json([
+                'success'=>'ada',
+                'name'=>$check->name,
+                'qr'=>$checksubmit->qr,
+                'nik'=>$check->nik,
+                'umur'=>$check->umur
+            ]);
            }
         }else{
             return response()->json(['success'=>'gagal']); 

@@ -292,19 +292,33 @@
             $("#result").show();
              $("#result").html('<div class="row">'+
                 '<div class="col-lg-4" data-aos="fade-right">'+
-            '<img src="http://localhost:8000/storage/qrcodes/3671080401900002.svg" class="img-fluid" alt="" style="width: 60%">'+
+            '<img src="http://localhost:8000/storage/qrcodes/'+data.qr+'" class="img-fluid" alt="" style="width: 60%">'+
           '</div>'+
           '<div class="col-lg-8 pt-4 pt-lg-0 content" data-aos="fade-left">'+
             '<h3>Selemat anda sudah terdaftar sebagai peserta vaksinisasi</h3>'+
             '<ul>'+
               '<li><i class="bi bi-check-circle"></i>'+data.name+'</li>'+
-              '<li><i class="bi bi-check-circle"></i> TIFK 19CID</li>'+
-              '<li><i class="bi bi-check-circle"></i> 320320142149494</li>'+
+              '<li><i class="bi bi-check-circle"></i> '+data.umur+'</li>'+
+              '<li><i class="bi bi-check-circle"></i> '+data.nik+'</li>'+
             '</ul>'+
           '</div>'+
         '</div>');
         }else if(data.success =="berhasil"){
             alert(data.success);
+             $("#result").show();
+             $("#result").html('<div class="row">'+
+                '<div class="col-lg-4" data-aos="fade-right">'+
+            '<img src="http://localhost:8000/storage/qrcodes/'+data.qr+'" class="img-fluid" alt="" style="width: 60%">'+
+          '</div>'+
+          '<div class="col-lg-8 pt-4 pt-lg-0 content" data-aos="fade-left">'+
+            '<h3>Selemat anda sudah terdaftar sebagai peserta vaksinisasi</h3>'+
+            '<ul>'+
+              '<li><i class="bi bi-check-circle"></i>'+data.name+'</li>'+
+              '<li><i class="bi bi-check-circle"></i> '+data.umur+'</li>'+
+              '<li><i class="bi bi-check-circle"></i> '+data.nik+'</li>'+
+            '</ul>'+
+          '</div>'+
+        '</div>');
         }else{
              alert('anda belum terdaptar');
         }
