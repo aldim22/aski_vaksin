@@ -1,16 +1,21 @@
-<Directory />
-    Options FollowSymLinks
-    AllowOverride All
-    Require all denied
- </Directory>
+<IfModule mod_rewrite.c>
+    <IfModule mod_negotiation.c>
+        Options -MultiViews -Indexes
+    </IfModule>
 
- <Directory /usr/share>
-    AllowOverride None
-    Require all granted
- </Directory>
+    RewriteEngine On
 
- <Directory /var/www/>
-    Options Indexes FollowSymLinks
-    AllowOverride all
-    Require all granted
- </Directory>
+    # Handle Authorization Header
+    RewriteCond %{HTTP:Authorization} .
+    RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+
+    # Redirect Trailing Slashes If Not A Folder...
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_URI} (.+)/$
+    RewriteRule ^ %1 [L,R=301]
+
+    # Send Requests To Front Controller...
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^ index.php [L]
+</IfModule>
