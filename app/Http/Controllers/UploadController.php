@@ -69,13 +69,14 @@ class UploadController extends Controller
             }
 
         $insert_data = collect($answers);
-return $insert_data;
+
         $chunks = $insert_data->chunk(1000);
 
         foreach ($chunks as $chunk)
         {
             \DB::table('peserta')->insert($chunk->toArray());
         }
+        return "success";
 
     }
 
