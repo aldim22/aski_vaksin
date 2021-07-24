@@ -4,18 +4,21 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTablePeserta extends Migration
+class CreatePeserta extends Migration
 {
     /**
      * Run the migrations.
      *
      * @return void
      */
-    public function up()
+     public function up()
     {
         Schema::create('peserta', function (Blueprint $table) {
             $table->id();
-            $table->integer('nik');
+            $table->string('note');
+            $table->string('nik');
+            $table->string('name');
+            $table->string('jenis_kelamin');
             $table->date('tanggal_lahir');
             $table->integer('umur');
             $table->string('instansi')->nullable();
@@ -25,11 +28,13 @@ class CreateTablePeserta extends Migration
             $table->string('alamat_ktp')->nullable();
             $table->string('kode_pos')->nullable();
             $table->string('kabupaten')->nullable();
+            $table->string('nip')->nullable();
             $table->string('ip')->nullable();
             $table->string('status')->nullable();
             $table->string('hubungan_keluarga')->nullable();
             $table->string('email')->nullable();
             $table->string('tempat_lahir')->nullable();
+            $table->string('status_kawin')->nullable();
             $table->string('faskes')->nullable();
             $table->string('lokasi_vaksin')->nullable();
             $table->string('customer_journey')->nullable();

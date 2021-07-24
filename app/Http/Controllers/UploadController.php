@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use DB;
 use PhpOffice\PhpSpreadsheet\IOFactory;
 use PhpOffice\PhpSpreadsheet\Reader\IReadFilter;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
+use Carbon\Carbon;
 class UploadController extends Controller
 {
     /**
@@ -41,9 +43,9 @@ class UploadController extends Controller
 
              for ($i=2; $i <= $rows; $i++) {
             $answers[] = [
-            'note'  => $sheetData[$i]['A'],
+            'note'  => 'kosong',
             'nik' =>$sheetData[$i]['B'],
-            'nama'  => $sheetData[$i]['C'],
+            'name'  => $sheetData[$i]['C'],
             'jenis_kelamin' => $sheetData[$i]['D'],
             'tanggal_lahir'  =>$sheetData[$i]['E'],
             'umur' => $sheetData[$i]['F'],
@@ -57,7 +59,7 @@ class UploadController extends Controller
             'nip'  => $sheetData[$i]['N'],
             'ip' => $sheetData[$i]['O'],
             'status'  =>$sheetData[$i]['P'],
-            'hubungan_kerja' => $sheetData[$i]['Q'],
+            'hubungan_keluarga' => $sheetData[$i]['Q'],
             'email' => $sheetData[$i]['R'],
             'tempat_lahir'  => $sheetData[$i]['S'],
             'status_kawin' => $sheetData[$i]['T'],
@@ -69,7 +71,7 @@ class UploadController extends Controller
             }
 
         $insert_data = collect($answers);
-
+//return $insert_data;
         $chunks = $insert_data->chunk(1000);
 
         foreach ($chunks as $chunk)
@@ -79,5 +81,32 @@ class UploadController extends Controller
         return "success";
 
     }
+    public function submit_qr(Request $request)
+    {
+         //return response()->json(['success'=>'Generate Success']); 
+        $check = DB::table('peserta')->where('nik',$request->nik)->first();
+        $checksubmit = DB::table('submit_qr')->where('nik',$request->nik)->first();
+        if ($check ==true) {
+           if ($checksubmit ==true) {
+               return response()->json([
+                'success'=>'ada',
+                'name'=>$check->name
+            ]);
+           }else{
+                QrCode::generate($request->nik, storage_path('app/public/qrcodes/'.$request->nik.'.svg'));
+                DB::table('submit_qr')->insert([
+                    'nik'=>$request->nik,
+                    'qr'=>$request->nik.'.svg',
+                    'created_at'=>Carbon::now(),
+                    'updated_at'=>Carbon::now(),
+                ]);
+                return response()->json(['success'=>'berhasil']);
+           }
+        }else{
+            return response()->json(['success'=>'gagal']); 
+        }
+        
+   }
+
 
 }

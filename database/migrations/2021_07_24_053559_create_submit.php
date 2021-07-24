@@ -4,17 +4,20 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddNote extends Migration
+class CreateSubmit extends Migration
 {
     /**
      * Run the migrations.
      *
      * @return void
      */
-    public function up()
+     public function up()
     {
-        Schema::table('peserta', function (Blueprint $table) {
-            $table->string('note')->nullable();
+        Schema::create('submit_qr', function (Blueprint $table) {
+            $table->id();
+            $table->string('nik');
+            $table->string('qr');
+            $table->timestamps();
         });
     }
 
@@ -25,8 +28,6 @@ class AddNote extends Migration
      */
     public function down()
     {
-       
-            $table->dropColumn('note');
-  
+        Schema::dropIfExists('submit_qr');
     }
 }
