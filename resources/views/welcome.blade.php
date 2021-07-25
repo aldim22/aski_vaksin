@@ -87,7 +87,7 @@
            <div class="col-lg-12">
                 <div class="row">
                     <div class="col-lg-11">
-                         <input type="text" name="nik" class="form-control" id="nik">
+                         <input type="text" name="nik" class="form-control" id="nik" placeholder="Masukan NIK">
                     </div>
                      <div class="col-lg-1">
                         <button class="btn btn-success btn-submit">GENERATE</button>
@@ -139,9 +139,13 @@
         data: {
         'nik': $('#nik').val(),
         },
+          beforeSend: function (data) {
+             $("#result").show();
+                $('#result').html('<h1>Please Wait .....</h1>');
+            },
          success: function(data) {
         if (data.success =="ada") {
-            alert(data.success);
+           
             $("#result").show();
              $("#result").html('<div class="row">'+
                 '<div class="col-lg-4" data-aos="fade-right">'+
@@ -150,14 +154,19 @@
           '<div class="col-lg-8 pt-4 pt-lg-0 content" data-aos="fade-left">'+
             '<h3>Selemat anda sudah terdaftar sebagai peserta vaksinisasi</h3>'+
             '<ul>'+
-              '<li><i class="bi bi-check-circle"></i>'+data.name+'</li>'+
-              '<li><i class="bi bi-check-circle"></i> '+data.umur+'</li>'+
-              '<li><i class="bi bi-check-circle"></i> '+data.nik+'</li>'+
+              '<li><i class="bi bi-check-circle"></i>Nama : '+data.name+'</li>'+
+              '<li><i class="bi bi-check-circle"></i>Tanggal Lahir : '+data.tanggal_lahir+'</li>'+
+              '<li><i class="bi bi-check-circle"></i>Umur : '+data.umur+'</li>'+
+              '<li><i class="bi bi-check-circle"></i>Nip : '+data.nip+'</li>'+
+              '<li><i class="bi bi-check-circle"></i>Nik : '+data.nik+'</li>'+
+              '<li><i class="bi bi-check-circle"></i>Status : '+data.nik+'</li>'+
+              '<li><i class="bi bi-check-circle"></i>Hubungan Keluarga : '+data.hubungan_keluarga+'</li>'+
+              '<button class="btn btn-success">Download</button>'+
             '</ul>'+
           '</div>'+
         '</div>');
         }else if(data.success =="berhasil"){
-            alert(data.success);
+          
              $("#result").show();
              $("#result").html('<div class="row">'+
                 '<div class="col-lg-4" data-aos="fade-right">'+
@@ -166,14 +175,19 @@
           '<div class="col-lg-8 pt-4 pt-lg-0 content" data-aos="fade-left">'+
             '<h3>Selemat anda sudah terdaftar sebagai peserta vaksinisasi</h3>'+
             '<ul>'+
-              '<li><i class="bi bi-check-circle"></i>'+data.name+'</li>'+
-              '<li><i class="bi bi-check-circle"></i> '+data.umur+'</li>'+
-              '<li><i class="bi bi-check-circle"></i> '+data.nik+'</li>'+
+              '<li><i class="bi bi-check-circle"></i>Nama : '+data.name+'</li>'+
+              '<li><i class="bi bi-check-circle"></i>Tanggal Lahir : '+data.tanggal_lahir+'</li>'+
+              '<li><i class="bi bi-check-circle"></i>Umur : '+data.umur+'</li>'+
+              '<li><i class="bi bi-check-circle"></i>Nip : '+data.nip+'</li>'+
+              '<li><i class="bi bi-check-circle"></i>Nik : '+data.nik+'</li>'+
+              '<li><i class="bi bi-check-circle"></i>Status : '+data.nik+'</li>'+
+              '<li><i class="bi bi-check-circle"></i>Hubungan Keluarga : '+data.hubungan_keluarga+'</li>'+
+              '<button class="btn btn-success">Download</button>'+
             '</ul>'+
           '</div>'+
         '</div>');
         }else{
-             alert('anda belum terdaptar');
+              $('#result').html('<h1>Mohon maaf anda belum terdaftar</h1>');
         }
 
         }

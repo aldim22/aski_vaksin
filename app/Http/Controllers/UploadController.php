@@ -86,6 +86,7 @@ class UploadController extends Controller
          //return response()->json(['success'=>'Generate Success']); 
         $check = DB::table('peserta')->where('nik',$request->nik)->first();
         $checksubmit = DB::table('submit_qr')->where('nik',$request->nik)->first();
+
         if ($check ==true) {
            if ($checksubmit ==true) {
                return response()->json([
@@ -93,26 +94,34 @@ class UploadController extends Controller
                 'name'=>$check->name,
                 'qr'=>$checksubmit->qr,
                 'nik'=>$check->nik,
-                'umur'=>$check->umur
+                'umur'=>$check->umur,
+                'nip'=>$check->nip,
+                'status'=>$check->status,
+                'hubungan_keluarga'=>$check->hubungan_keluarga,
+                'tanggal_lahir'=>$check->tanggal_lahir
             ]);
            }else{
-                QrCode::generate($request->nik, storage_path('app/public/qrcodes/'.$request->nik.'.svg'));
+                QrCode::generate($request->nik, storage_path('app/public/qrcodes/'.$request->nik.'-'.$check->tanggal_lahir.'.svg'));
                 DB::table('submit_qr')->insert([
                     'nik'=>$request->nik,
-                    'qr'=>$request->nik.'.svg',
+                    'qr'=>$request->nik.'-'.$check->tanggal_lahir.'.svg',
                     'created_at'=>Carbon::now(),
                     'updated_at'=>Carbon::now(),
                 ]);
                 return response()->json([
-                'success'=>'ada',
+                'success'=>'berhasil',
                 'name'=>$check->name,
                 'qr'=>$checksubmit->qr,
                 'nik'=>$check->nik,
-                'umur'=>$check->umur
+                'umur'=>$check->umur,
+                'nip'=>$check->nip,
+                'status'=>$check->status,
+                'hubungan_keluarga'=>$check->hubungan_keluarga,
+                'tanggal_lahir'=>$check->tanggal_lahir
             ]);
            }
         }else{
-            return response()->json(['success'=>'gagal']); 
+            return response()->json(['success'=>'maap anda belum terdaftar']); 
         }
         
    }
