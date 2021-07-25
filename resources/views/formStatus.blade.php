@@ -98,7 +98,7 @@
                                         <td scope="row">{{ $b->jenis_kelamin }}</td>
                                         <td scope="row">{{ $b->instansi }}</td>
                                         <td class="text-center" scope="row"><b class="text-danger">Belum Registrasi</b></td>
-                                        <td class="text-center" scope="row">{{ $b->tanggal_regist }}</td>
+                                        <td class="text-center" scope="row">-</td>
                                         </td>
                                     </tr>
                                 @endforeach

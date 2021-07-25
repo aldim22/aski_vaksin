@@ -56,29 +56,31 @@
                                 </div>
                                 <br>
                                 @if (isset($peserta))
-                                    @if($peserta[0]->status_regist == 0)
+                                    @if ($peserta->isEmpty())
+                                    <div class="alert alert-danger" role="alert">
+                                        <div class="alert-message text-center">
+                                            <strong>{{ $t }}</strong><br>
+                                        </div>
+                                    </div>
+                                    @elseif($peserta[0]->status_regist == 0)
                                     <div class="alert alert-success" role="alert">
                                         <div class="alert-message text-center">
                                             <strong>{{ $s }}</strong><br>
 
                                             <?php
-                                                $date = date('d/m/Y H:i:s', strtotime('+ 7 Hours'));
+                                                $date = date('Y/m/d H:i:s', strtotime('+ 7 Hours'));
                                             ?>
 
                                             Tanggal Registrasi: {{ $date }}
                                         </div>
                                     </div>
-                                    @endif
-                                    @if($peserta[0]->status_regist == 1)
+                                    @elseif($peserta[0]->status_regist == 1)
                                     <div class="alert alert-warning" role="alert">
                                         <div class="alert-message text-center">
                                             <strong>{{ $d }}</strong><br>
-
-                                            <?php
-                                                $date = date('d/m/Y H:i:s', strtotime('+ 7 Hours'));
-                                            ?>
-
-                                            Tanggal Registrasi: {{ $date }}
+                                            @foreach($peserta as $p)
+                                                 Tanggal Registrasi: {{ $p->tanggal_regist }}
+                                            @endforeach
                                         </div>
                                     </div>
                                     @endif
@@ -243,7 +245,7 @@
             var dt=x.getDate().toString();
             dt=dt.length==1 ? 0+dt : dt;
 
-            var x1=month + "/" + dt + "/" + x.getFullYear(); 
+            var x1=x.getFullYear() + "/" + month + "/" + dt; 
             x1 = x1 + " - " +  hours + ":" +  minutes + ":" +  seconds;
             document.getElementById('ct7').innerHTML = x1;
             display_c7();
