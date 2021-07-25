@@ -140,7 +140,7 @@
         
         e.preventDefault();
          $("#result").hide();
-         $("#qrcode").hide();
+         document.getElementById('qrcode').innerHTML = "";
          var QR_CODE = new QRCode("qrcode", {
           width: 300,
           height: 300,
