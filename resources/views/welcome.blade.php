@@ -100,7 +100,7 @@
 
    <div class="row">
       <div class="col-lg-4" data-aos="fade-right">
-         <div id="qrcode" class="img-fluid"></div>
+         <div id="qrcode" class="img-fluid" style="display: none;"></div>
         </div>
          <div class="col-lg-6" data-aos="fade-right">
         <div id="result" style="display: none;"></div>
@@ -140,6 +140,7 @@
         
         e.preventDefault();
          $("#result").hide();
+         $("#qrcode").hide();
          var QR_CODE = new QRCode("qrcode", {
           width: 300,
           height: 300,
@@ -163,6 +164,7 @@
         if (data.success =="ada") {
            QR_CODE.makeCode(data.qr);
             $("#result").show();
+            $("#qrcode").show();
              $("#result").html(       
           '<div class="content" data-aos="fade-left">'+
             '<h3>Selemat anda sudah terdaftar sebagai peserta vaksinisasi</h3>'+
@@ -180,6 +182,7 @@
         }else if(data.success =="berhasil"){ 
            QR_CODE.makeCode(data.qr);
             $("#result").show();
+            $("#qrcode").show();
              $("#result").html(       
           '<div class="content" data-aos="fade-left">'+
             '<h3>Selemat anda sudah terdaftar sebagai peserta vaksinisasi</h3>'+
