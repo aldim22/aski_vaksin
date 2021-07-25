@@ -1,19 +1,26 @@
-.bg-img {
-  background-image: url("/assets/bg-aski.jpg");
-  background-attachment: fixed;
+.content-section {
+  margin: 50px 20px 50px 20px;
+}
+
+.cover-card {
+  background-image: url("/assets/cover.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   height: auto;
-  min-height: 100vh;
+  min-height: 50vh;
 }
 
 .card {
-  margin: 50px 20px 50px 20px;
-  border-radius: 10px;
+  border-radius: 15px;
+  overflow: hidden;
 }
 
-.bg-aski {
-  height: 500px;
+.avatar {
+  max-width: 150px;
+}
+
+.status-container {
+  margin-top: 30px;
 }
 /*# sourceMappingURL=style.css.map */
