@@ -101,7 +101,7 @@ class UploadController extends Controller
                 'tanggal_lahir'=>$check->tanggal_lahir
             ]);
            }else{
-                $generate = QrCode::generate($request->nik, storage_path('app/public/qrcodes/'.$request->nik.'.svg'));
+                $generate = QrCode::generate($request->nik);
                 $insert = DB::table('submit_qr')->insert([
                     'nik'=>$request->nik,
                     'qr'=>$request->nik.'.svg',
