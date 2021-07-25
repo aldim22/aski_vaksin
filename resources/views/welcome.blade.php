@@ -87,7 +87,7 @@
            <div class="col-lg-12">
                 <div class="row">
                     <div class="col-lg-11">
-                         <input type="text" name="nik" class="form-control" id="nik" placeholder="Masukan NIK">
+                         <input type="text" name="nik" class="form-control" id="nik" placeholder="Masukan NIK" required>
                     </div>
                      <div class="col-lg-1">
                         <button class="btn btn-success btn-submit">GENERATE</button>
