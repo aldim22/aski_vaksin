@@ -101,24 +101,27 @@ class UploadController extends Controller
                 'tanggal_lahir'=>$check->tanggal_lahir
             ]);
            }else{
-                QrCode::generate($request->nik.'-'.$check->tanggal_lahir, storage_path('app/public/qrcodes/'.$request->nik.'-'.$check->tanggal_lahir.'.svg'));
-                DB::table('submit_qr')->insert([
+                $generate = QrCode::generate($request->nik, storage_path('app/public/qrcodes/'.$request->nik.'.svg'));
+                $insert = DB::table('submit_qr')->insert([
                     'nik'=>$request->nik,
-                    'qr'=>$request->nik.'-'.$check->tanggal_lahir.'.svg',
+                    'qr'=>$request->nik.'.svg',
                     'created_at'=>Carbon::now(),
                     'updated_at'=>Carbon::now(),
                 ]);
-                return response()->json([
-                'success'=>'berhasil',
-                'name'=>$check->name,
-                'qr'=>$checksubmit->qr,
-                'nik'=>$check->nik,
-                'umur'=>$check->umur,
-                'nip'=>$check->nip,
-                'status'=>$check->status,
-                'hubungan_keluarga'=>$check->hubungan_keluarga,
-                'tanggal_lahir'=>$check->tanggal_lahir
-            ]);
+                if ($insert) {
+                    return response()->json([
+                        'success'=>'berhasil',
+                        'name'=>$check->name,
+                        'qr'=>$checksubmit->qr,
+                        'nik'=>$check->nik,
+                        'umur'=>$check->umur,
+                        'nip'=>$check->nip,
+                        'status'=>$check->status,
+                        'hubungan_keluarga'=>$check->hubungan_keluarga,
+                        'tanggal_lahir'=>$check->tanggal_lahir
+                    ]);
+                }
+                
            }
         }else{
             return response()->json(['success'=>'maap anda belum terdaftar']); 
