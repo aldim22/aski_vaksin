@@ -19,7 +19,7 @@
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 
-<body>
+<body style="background-color: #f1f2f4">
     <div class="container-fluid status-container">
 
         <?php

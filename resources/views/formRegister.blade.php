@@ -18,7 +18,7 @@
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 
-<body>
+<body style="background-color: #f1f2f4">
     <div class="container-fluid bg-img">
         <div class="row content-section">
             <div class="col-sm-8">
@@ -29,7 +29,8 @@
                             $counter = DB::table('peserta')->where('status_regist', '=', '1')->count();
                         ?>
 
-                        <span style="text-align: left; font-size: 50px"" class="d-block" ><b><a href="{{ url::route('getFormStatus') }}" style="text-decoration: none; color: black">Total Registrasi: </a></b> {{ $counter }}</span>
+                        <span style="text-align: center; font-size: 50px; display: block"><b><a href="{{ url::route('getFormStatus') }}" style="text-decoration: none; color: black">Total Registrasi: </a> {{ $counter }}</b></span>
+                        <span style="text-align: center; font-size: 20px; margin-bottom: 20px;" class="d-block" id='ct7'></span>
                     </div>
                 </div>
                 <div class="card">
@@ -83,7 +84,7 @@
                                     @endif
                                 @endif
                                 @if (!isset($peserta))
-                                <div class="alert alert-secondary" role="alert">
+                                <div class="alert" style="background-color: #f1f2f4" role="alert">
                                     <div class="alert-message text-center">
                                         <strong>-</strong>
                                     </div>
@@ -94,7 +95,7 @@
                                 @csrf
                                 <div class="input-group mb-3">
                                     <input type="number" class="form-control" name="byNIK" placeholder="NIK" aria-describedby="button-addon2" required>
-                                    <button class="btn btn-secondary" type="submit" id="button-addon2">Registrasi</button>
+                                    <button class="btn btn-info" type="submit" id="button-addon2">Registrasi</button>
                                 </div>
                                 @if (isset($peserta))
                                 <div class="text-center">
@@ -112,17 +113,10 @@
             <div class="col-sm-4">
                 <div class="row">
                     <div class="col">
-                        <span style="text-align: left" class="d-block" id='ct7'></span>
-                    </div>
-                    <div class="col">
-                        <div class="row">
-                            <div class="col">
-                                <span>&nbsp;</span>
-                            </div>
-                        </div>
+                        
                     </div>
                 </div>
-                <div class="card">
+                <div class="card" style="min-height: 80vh">
                     <div class="card-header text-center" style="font-size: 1rem">Data Peserta</div>
                     <div class="card-body table-responsive">
                         @if (isset($peserta))
@@ -227,16 +221,9 @@
     <script>
         function display_ct7() {
             var x = new Date()
-            var ampm = x.getHours( ) >= 12 ? ' PM' : ' AM';
-            hours = x.getHours( ) % 24;
-            hours = hours ? hours : 24;
-            hours=hours.toString().length==1? 0+hours.toString() : hours;
-
-            var minutes=x.getMinutes().toString()
-            minutes=minutes.length==1 ? 0+minutes : minutes;
-
-            var seconds=x.getSeconds().toString()
-            seconds=seconds.length==1 ? 0+seconds : seconds;
+            var hours = x.getHours();
+            var minutes = x.getMinutes();
+            var seconds = x.getSeconds();
 
             var month=(x.getMonth() +1).toString();
             month=month.length==1 ? 0+month : month;
