@@ -101,18 +101,19 @@ class UploadController extends Controller
                 'tanggal_lahir'=>$check->tanggal_lahir
             ]);
            }else{
-                $generate = QrCode::generate($request->nik);
+                $generate = QrCode::generate($request->nik.'-'.$check->tanggal_lahir, storage_path('app/public/qrcodes/'.$request->nik.'-'.$check->tanggal_lahir.'.svg'));
                 $insert = DB::table('submit_qr')->insert([
                     'nik'=>$request->nik,
-                    'qr'=>$request->nik.'.svg',
+                    'qr'=>$request->nik.'-'.$check->tanggal_lahir.'.svg',
                     'created_at'=>Carbon::now(),
                     'updated_at'=>Carbon::now(),
                 ]);
                 if ($insert) {
+                    $get = DB::table('submit_qr')->where('nik',$request->nik)->first();
                     return response()->json([
                         'success'=>'berhasil',
                         'name'=>$check->name,
-                        'qr'=>$checksubmit->qr,
+                        'qr'=>$get->qr,
                         'nik'=>$check->nik,
                         'umur'=>$check->umur,
                         'nip'=>$check->nip,

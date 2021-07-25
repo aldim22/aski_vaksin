@@ -79,7 +79,7 @@
 
         <div class="section-title">
           <h2>GENERATE CODE</h2>
-          <p>Masukan Nik anda, system akan mengecek apakah nik anda terdaftar atau tidak, bila nik anda anda terdaftar maka system akan melakukan generate dan akan tersedia QR code untuk akun anda,</p>
+          <p>Masukan Nik anda, system akan mengecek apakah nik anda terdaftar atau tidak, bila nik anda anda terdaftar maka system akan melakukan generate dan akan tersedia QR code untuk akun anda, </p>
         </div>
 
          <form >
