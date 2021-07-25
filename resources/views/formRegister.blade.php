@@ -29,7 +29,7 @@
                             $counter = DB::table('peserta')->where('status_regist', '=', '1')->count();
                         ?>
 
-                        <span style="text-align: left" class="d-block" ><b>Total Registrasi: </b> {{ $counter }}</span>
+                        <span style="text-align: left" class="d-block" ><b><a href="{{ url::route('getFormStatus') }}" style="text-decoration: none; color: black">Total Registrasi: </a></b> {{ $counter }}</span>
                     </div>
                     <div class="col">
                         <span style="text-align: right" class="d-block" id='ct7'></span>

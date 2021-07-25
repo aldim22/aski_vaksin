@@ -33,7 +33,7 @@ class formRegisterController extends Controller
 
     public function indexStatus() {
         $belum = DB::table('peserta')->where('status_regist', '=', '0')->get();
-        $sudah = DB::table('peserta')->where('status_regist', '=', '1')->get();
+        $sudah = DB::table('peserta')->where('status_regist', '=', '1')->orderBy('tanggal_regist', 'desc')->get();
 
         return view('formStatus', ['belum' => $belum, 'sudah' => $sudah]);
     }
