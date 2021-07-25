@@ -29,10 +29,7 @@
                             $counter = DB::table('peserta')->where('status_regist', '=', '1')->count();
                         ?>
 
-                        <span style="text-align: left" class="d-block" ><b><a href="{{ url::route('getFormStatus') }}" style="text-decoration: none; color: black">Total Registrasi: </a></b> {{ $counter }}</span>
-                    </div>
-                    <div class="col">
-                        <span style="text-align: right" class="d-block" id='ct7'></span>
+                        <span style="text-align: left; font-size: 50px"" class="d-block" ><b><a href="{{ url::route('getFormStatus') }}" style="text-decoration: none; color: black">Total Registrasi: </a></b> {{ $counter }}</span>
                     </div>
                 </div>
                 <div class="card">
@@ -114,7 +111,9 @@
                 
             <div class="col-sm-4">
                 <div class="row">
-                    <div class="col"></div>
+                    <div class="col">
+                        <span style="text-align: left" class="d-block" id='ct7'></span>
+                    </div>
                     <div class="col">
                         <div class="row">
                             <div class="col">
