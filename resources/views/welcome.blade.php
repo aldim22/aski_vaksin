@@ -97,8 +97,15 @@
           
         </form>
     <br><br>
-    <span id="result" style="display: none;"></span>
-       
+
+   <div class="row">
+      <div class="col-lg-4" data-aos="fade-right">
+         <div id="qrcode" class="img-fluid"></div>
+        </div>
+         <div class="col-lg-6" data-aos="fade-right">
+        <div id="result" style="display: none;"></div>
+      </div>
+   </div>
 
       </div>
     </section><!-- End About Us Section -->
@@ -121,6 +128,7 @@
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
+  <script src="assets/js/qrcode.js" defer></script>
   <script
   src="https://code.jquery.com/jquery-3.6.0.js"
   integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
@@ -132,6 +140,14 @@
         
         e.preventDefault();
          $("#result").hide();
+         var QR_CODE = new QRCode("qrcode", {
+          width: 300,
+          height: 300,
+          colorDark: "#000000",
+          colorLight: "#ffffff",
+          correctLevel: QRCode.CorrectLevel.H,
+          });
+
          var url = 'http://localhost:8000/storage/qrcodes/';
         $.ajax({
         type: "GET",
@@ -145,13 +161,10 @@
             },
          success: function(data) {
         if (data.success =="ada") {
-           
+           QR_CODE.makeCode(data.qr);
             $("#result").show();
-             $("#result").html('<div class="row">'+
-                '<div class="col-lg-4" data-aos="fade-right">'+
-            '<img src="http://localhost:8000/storage/qrcodes/'+data.qr+'" class="img-fluid" alt="" style="width: 60%">'+
-          '</div>'+
-          '<div class="col-lg-8 pt-4 pt-lg-0 content" data-aos="fade-left">'+
+             $("#result").html(       
+          '<div class="content" data-aos="fade-left">'+
             '<h3>Selemat anda sudah terdaftar sebagai peserta vaksinisasi</h3>'+
             '<ul>'+
               '<li><i class="bi bi-check-circle"></i>Nama : '+data.name+'</li>'+
@@ -163,16 +176,12 @@
               '<li><i class="bi bi-check-circle"></i>Hubungan Keluarga : '+data.hubungan_keluarga+'</li>'+
               '<button class="btn btn-success">Download</button>'+
             '</ul>'+
-          '</div>'+
-        '</div>');
-        }else if(data.success =="berhasil"){
-          
-             $("#result").show();
-             $("#result").html('<div class="row">'+
-                '<div class="col-lg-4" data-aos="fade-right">'+
-            '<img src="http://localhost:8000/storage/qrcodes/'+data.qr+'" class="img-fluid" alt="" style="width: 60%">'+
-          '</div>'+
-          '<div class="col-lg-8 pt-4 pt-lg-0 content" data-aos="fade-left">'+
+          '</div>');
+        }else if(data.success =="berhasil"){ 
+           QR_CODE.makeCode(data.qr);
+            $("#result").show();
+             $("#result").html(       
+          '<div class="content" data-aos="fade-left">'+
             '<h3>Selemat anda sudah terdaftar sebagai peserta vaksinisasi</h3>'+
             '<ul>'+
               '<li><i class="bi bi-check-circle"></i>Nama : '+data.name+'</li>'+
@@ -184,8 +193,7 @@
               '<li><i class="bi bi-check-circle"></i>Hubungan Keluarga : '+data.hubungan_keluarga+'</li>'+
               '<button class="btn btn-success">Download</button>'+
             '</ul>'+
-          '</div>'+
-        '</div>');
+          '</div>');
         }else{
               $('#result').html('<h1>Mohon maaf anda belum terdaftar</h1>');
         }
