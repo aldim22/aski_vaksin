@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -20,3 +21,8 @@ Route::get('/upload', 'UploadController@index');
 Route::post('/import', 'UploadController@import');
 Route::get('/submit_qr', 'UploadController@submit_qr');
 Route::get('/download/{nik}', 'UploadController@download');
+
+Route::get('/registrasi',"formRegisterController@index") -> name('getForm');
+Route::post('/registrasi',"formRegisterController@search") -> name('getFormSearch');
+Route::get('/registrasi/status',"formRegisterController@indexStatus") -> name('getFormStatus');
+
