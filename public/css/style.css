@@ -1,5 +1,5 @@
 .content-section {
-  margin: 50px 20px 50px 20px;
+  margin: 10px 20px 10px 20px;
 }
 
 .cover-card {
@@ -7,8 +7,8 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  height: auto;
-  min-height: 50vh;
+  height: 465px;
+  max-height: 465px;
 }
 
 .card {
@@ -16,10 +16,11 @@
   overflow: hidden;
   -webkit-box-shadow: 0 6px 6px -6px #555555;
           box-shadow: 0 6px 6px -6px #555555;
+  border: 0 !important;
 }
 
 .avatar {
-  max-width: 150px;
+  max-width: 125px;
 }
 
 .status-container {
@@ -30,5 +31,9 @@
   color: black !important;
   font-weight: bolder;
   background-color: #fff !important;
+}
+
+.footer-clean {
+  background-color: transparent !important;
 }
 /*# sourceMappingURL=style.css.map */
