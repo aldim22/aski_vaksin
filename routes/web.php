@@ -24,5 +24,6 @@ Route::get('/download/{nik}', 'UploadController@download');
 
 Route::get('/registrasi',"formRegisterController@index") -> name('getForm');
 Route::post('/registrasi',"formRegisterController@search") -> name('getFormSearch');
+Route::get('/registrasi/count',"formRegisterController@counterP") -> name('getFormCounter');
 Route::get('/registrasi/status',"formRegisterController@indexStatus") -> name('getFormStatus');
 

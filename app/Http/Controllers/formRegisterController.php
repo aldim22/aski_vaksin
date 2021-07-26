@@ -37,5 +37,9 @@ class formRegisterController extends Controller
 
         return view('formStatus', ['belum' => $belum, 'sudah' => $sudah]);
     }
+
+    public function counterP() {
+        echo DB::table('peserta')->where('status_regist', '=', '1')->count();
+    }
     
 }

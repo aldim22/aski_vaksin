@@ -10,7 +10,10 @@
 <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
 	<link rel="preconnect" href="https://fonts.gstatic.com">
 
-    <title>Form Registrasi</title>
+    <title>Status Registrasi</title>
+
+    <link href="assets/img/aski.png" rel="icon">
+    <link href="assets/img/aski.png" rel="apple-touch-icon">
 
     <link rel="stylesheet" href="{{ asset('css/src/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/src/datatables.min.css') }}">

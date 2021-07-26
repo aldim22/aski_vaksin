@@ -12,6 +12,9 @@
 
     <title>Form Registrasi</title>
 
+    <link href="assets/img/aski.png" rel="icon">
+    <link href="assets/img/aski.png" rel="apple-touch-icon">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
 
     <link rel="stylesheet" href="assets/css/style.css">
@@ -22,16 +25,11 @@
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 
-<body style="background-color: #f1f2f4" onload = "JavaScript:AutoRefresh(30000);">
+<body style="background-color: #f1f2f4">
     <div class="container-fluid bg-img">
         <div class="row">
             <div class="col">
-
-                <?php
-                    $counter = DB::table('peserta')->where('status_regist', '=', '1')->count();
-                ?>
-
-                <span id="counterPeserta" style="text-align: center; font-size: 50px; display: block"><b><a href="{{ route('getFormStatus') }}" style="text-decoration: none; color: black">Total Peserta Registrasi: </a> {{ $counter }}</b></span>
+                <span style="text-align: center; font-size: 50px; display: block"><b><a href="{{ route('getFormStatus') }}" style="text-decoration: none; color: black">Total Peserta Registrasi: </a></b> <b id="counterP">{{ DB::table('peserta')->where('status_regist', '=', '1')->count() }}</b></span>
                 <span style="text-align: center; font-size: 20px; margin-bottom: 15px;" class="d-block" id='ct7'></span>
             </div>
         </div>
@@ -251,6 +249,19 @@
     <script src="js/src/bootstrap.min.js"></script>
     <script src="js/src/jquery-3.6.0.min.js"></script>
     <script>
+        function getCount() {
+            $.ajax({
+                type: "GET",
+                url: "{{ route('getFormCounter') }}"
+            })
+            .done(function( data ) {
+                $('#counterP').html(data);
+                setTimeout(getCount, 30000);
+            });
+        }
+        getCount()
+    </script>
+    <script>
         function display_ct7() {
             var x = new Date()
             var hours = x.getHours();
@@ -277,12 +288,6 @@
             mytime=setTimeout('display_ct7()',refresh)
         }
         display_c7()
-
-        $("#inputbyNIK").focus();
-
-        function AutoRefresh(t) {
-            setTimeout("location.reload(true);", t);
-        }
     </script>
 </body>
 
