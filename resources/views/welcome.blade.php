@@ -187,7 +187,7 @@
               '<li><i class="bi bi-check-circle"></i>Nik : '+data.nik+'</li>'+
               '<li><i class="bi bi-check-circle"></i>Status : '+data.nik+'</li>'+
               '<li><i class="bi bi-check-circle"></i>Hubungan Keluarga : '+data.hubungan_keluarga+'</li>'+
-              '<a class="btn btn-success" href="download/'+data.nik+'">Download</a>'+
+              '<a class="btn btn-success" href="download/'+data.id+'">Download</a>'+
             '</ul>'+
           '</div>');
         }else if(data.success =="berhasil"){ 
@@ -205,7 +205,7 @@
               '<li><i class="bi bi-check-circle"></i>Nik : '+data.nik+'</li>'+
               '<li><i class="bi bi-check-circle"></i>Status : '+data.nik+'</li>'+
               '<li><i class="bi bi-check-circle"></i>Hubungan Keluarga : '+data.hubungan_keluarga+'</li>'+
-              '<a class="btn btn-success" href="download/'+data.nik+'">Download</a>'+
+              '<a class="btn btn-success" href="download/'+data.id+'">Download</a>'+
             '</ul>'+
           '</div>');
         }else{
