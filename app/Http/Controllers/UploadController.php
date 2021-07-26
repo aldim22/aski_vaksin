@@ -9,6 +9,9 @@ use PhpOffice\PhpSpreadsheet\IOFactory;
 use PhpOffice\PhpSpreadsheet\Reader\IReadFilter;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 use Carbon\Carbon;
+use App\Models\Peserta;
+use App\Models\Submitqr;
+use PDF;
 class UploadController extends Controller
 {
     /**
@@ -91,6 +94,7 @@ class UploadController extends Controller
            if ($checksubmit ==true) {
                return response()->json([
                 'success'=>'ada',
+                'id'=>$check->id,
                 'name'=>$check->name,
                 'qr'=>$checksubmit->qr,
                 'nik'=>$check->nik,
@@ -112,6 +116,7 @@ class UploadController extends Controller
                     $get = DB::table('submit_qr')->where('nik',$request->nik)->first();
                     return response()->json([
                         'success'=>'berhasil',
+                        'id'=>$check->id,
                         'name'=>$check->name,
                         'qr'=>$get->qr,
                         'nik'=>$check->nik,
@@ -131,7 +136,13 @@ class UploadController extends Controller
    }
    public function download($nik)
    {
-    return "download";
+       $peserta = Peserta::where('id',$nik)->first();
+       
+       $submit = Submitqr::where('nik',$peserta->nik)->first();
+       $qrcode = base64_encode(QrCode::format('svg')->size(200)->errorCorrection('H')->generate($submit->qr));
+
+        $pdf = PDF::loadview('download',['qrcode'=>$qrcode,'peserta'=>$peserta]);
+        return $pdf->download('kartu_vaksin_'.$peserta->nik.'.pdf');
    }
 
 
