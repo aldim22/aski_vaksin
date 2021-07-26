@@ -12,9 +12,9 @@
 
     <title>Form Registrasi</title>
 
-    <link rel="stylesheet" href="{{ asset('css/src/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/src/datatables.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <link rel="stylesheet" href="{{ URL::asset('css/src/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ URL::asset('css/src/datatables.min.css') }}">
+    <link rel="stylesheet" href="{{ URL::asset('css/style.css') }}">
 
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
@@ -112,8 +112,8 @@
         </div>
     </div>
 
-    <script src="{{ asset('js/src/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('js/src/datatables.min.js') }}"></script>
+    <script src="{{ URL::asset('js/src/bootstrap.min.js') }}"></script>
+    <script src="{{ URL::asset('js/src/datatables.min.js') }}"></script>
     <script>
         $(document).ready( function () {
             $('table.display').DataTable( {
