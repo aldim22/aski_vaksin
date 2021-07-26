@@ -13,6 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/registrasi',"formRegisterController@index") -> name('getForm');
+Route::post('/registrasi',"formRegisterController@search") -> name('getFormSearch');
+Route::get('/registrasi/status',"formRegisterController@indexStatus") -> name('getFormStatus');
