@@ -19,3 +19,4 @@ Route::get('/', function () {
 Route::get('/upload', 'UploadController@index');
 Route::post('/import', 'UploadController@import');
 Route::get('/submit_qr', 'UploadController@submit_qr');
+Route::get('/download/{nik}', 'UploadController@download');

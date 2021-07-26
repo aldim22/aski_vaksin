@@ -129,6 +129,10 @@ class UploadController extends Controller
         }
         
    }
+   public function download($nik)
+   {
+    return "download";
+   }
 
 
 }
