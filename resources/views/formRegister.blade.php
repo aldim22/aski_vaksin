@@ -12,8 +12,8 @@
 
     <title>Form Registrasi</title>
 
-    <link rel="stylesheet" href="{{ URL::asset('css/src/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ URL::asset('css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/src/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
@@ -29,7 +29,7 @@
                             $counter = DB::table('peserta')->where('status_regist', '=', '1')->count();
                         ?>
 
-                        <span style="text-align: center; font-size: 50px; display: block"><b><a href="{{ url::route('getFormStatus') }}" style="text-decoration: none; color: black">Total Registrasi: </a> {{ $counter }}</b></span>
+                        <span style="text-align: center; font-size: 50px; display: block"><b><a href="{{ route('getFormStatus') }}" style="text-decoration: none; color: black">Total Registrasi: </a> {{ $counter }}</b></span>
                         <span style="text-align: center; font-size: 20px; margin-bottom: 20px;" class="d-block" id='ct7'></span>
                     </div>
                 </div>
@@ -41,7 +41,7 @@
                                 <h4 class="text-center">Form Registrasi</h4>
                                 <hr><br>
                                 <div class="text-center">
-                                    <img class="avatar" src="{{ URL::asset('assets/avatar.png') }}" alt="">
+                                    <img class="avatar" src="{{ asset('assets/avatar.png') }}" alt="">
                                     <br>
                                     @if (isset($peserta))
                                         @foreach($peserta as $p)
@@ -91,7 +91,7 @@
                                 </div>
                                 @endif
                                 <br>
-                                <form action="{{ URL::route('getFormSearch') }}" method="post"> 
+                                <form action="{{ route('getFormSearch') }}" method="post"> 
                                 @csrf
                                 <div class="input-group mb-3">
                                     <input type="number" class="form-control" name="byNIK" placeholder="NIK" aria-describedby="button-addon2" required>
@@ -99,7 +99,7 @@
                                 </div>
                                 @if (isset($peserta))
                                 <div class="text-center">
-                                    <a href="{{ url::route('getForm') }}" style="text-decoration: none; color: gray">[Refresh]</a>
+                                    <a href="{{ route('getForm') }}" style="text-decoration: none; color: gray">[Refresh]</a>
                                 </div>
                                 @endif
                                 </form>
@@ -217,7 +217,7 @@
         </div>
     </div>
 
-    <script src="{{ URL::asset('js/src/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('js/src/bootstrap.min.js') }}"></script>
     <script>
         function display_ct7() {
             var x = new Date()
