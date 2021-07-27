@@ -108,7 +108,7 @@ class UploadController extends Controller
                
                 $insert = DB::table('submit_qr')->insert([
                     'nik'=>$request->nik,
-                    'qr'=>$request->nik.'-'.$check->tanggal_lahir.'.svg',
+                    'qr'=>$request->nik.'-'.$check->tanggal_lahir,
                     'created_at'=>Carbon::now(),
                     'updated_at'=>Carbon::now(),
                 ]);
