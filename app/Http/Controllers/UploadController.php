@@ -46,7 +46,7 @@ class UploadController extends Controller
 
              for ($i=2; $i <= $rows; $i++) {
             $answers[] = [
-            'note'  => 'kosong',
+             'note'  => 'kosong',
             'nik' =>$sheetData[$i]['G'],
             'name'  => $sheetData[$i]['H'],
             'jenis_kelamin' => $sheetData[$i]['I'],
@@ -55,8 +55,8 @@ class UploadController extends Controller
             'instansi' => $sheetData[$i]['L'],
             'jenis_pekerjaan'  => $sheetData[$i]['M'],
             'kode_kategori' => $sheetData[$i]['N'],
-            'no_hp' => $sheetData[$i]['O'],
-            'alamat_ktp'  => $sheetData[$i]['P'],
+            'no_hp' => "-",
+            'alamat_ktp'  => "-",
             'kode_pos'  => $sheetData[$i]['Q'],
             'kabupaten' =>$sheetData[$i]['R'],
             'nip'  => $sheetData[$i]['S'],
@@ -68,10 +68,15 @@ class UploadController extends Controller
             'status_kawin' => $sheetData[$i]['Y'],
             'faskes' => $sheetData[$i]['Z'],
             'lokasi_vaksin'  => $sheetData[$i]['AA'],
-            'customer_journey'  => $sheetData[$i]['W'],
-            'bagian'  => $sheetData[$i]['X'],
-             'waktu_vaksin'  => $sheetData[$i]['E'],
-             'tanggal_vaksin'  => $sheetData[$i]['F'],
+            'customer_journey'  => $sheetData[$i]['AB'],
+            'bagian'  => $sheetData[$i]['D'],
+            'created_at'=>Carbon::now(),
+            'updated_at'=>Carbon::now(),
+            'status_regist'=>null,
+            'tanggal_regist'=>Carbon::now(),
+            'waktu_vaksin'=>$sheetData[$i]['E'],
+            'tanggal_vaksin'=>$sheetData[$i]['F'],
+            'keterangan'=>$sheetData[$i]['C'],
                 ];
             }
 
