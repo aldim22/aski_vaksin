@@ -102,7 +102,9 @@ class UploadController extends Controller
                 'nip'=>$check->nip,
                 'status'=>$check->status,
                 'hubungan_keluarga'=>$check->hubungan_keluarga,
-                'tanggal_lahir'=>$check->tanggal_lahir
+                'tanggal_lahir'=>$check->tanggal_lahir,
+                'waktu_vaksin'=>$check->waktu_vaksin,
+                'tanggal_vaksin'=>$check->tanggal_vaksin
             ]);
            }else{
                
@@ -124,7 +126,9 @@ class UploadController extends Controller
                         'nip'=>$check->nip,
                         'status'=>$check->status,
                         'hubungan_keluarga'=>$check->hubungan_keluarga,
-                        'tanggal_lahir'=>$check->tanggal_lahir
+                        'tanggal_lahir'=>$check->tanggal_lahir,
+                        'waktu_vaksin'=>$check->waktu_vaksin,
+                        'tanggal_vaksin'=>$check->tanggal_vaksin
                     ]);
                 }
                 
