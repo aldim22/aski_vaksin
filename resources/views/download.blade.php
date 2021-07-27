@@ -31,6 +31,8 @@
    	<img src="data:image/png;base64, {!! $qrcode !!}">	
   </div>
   <div class="column" style="">
+  <p>Tanggal : <b>{{ $peserta->waktu_vaksin }}</b></p>
+  <p>Jam : <b>{{ $peserta->tanggal_vaksin }}</b></p>
   <p>Nama : <b>{{ $peserta->name }}</b></p>
 	<p>Tanggal Lahir :<b>{{ $peserta->tanggal_lahir }}</b></p> 
 	<p>Nik : <b>{{ $peserta->nik }}</b></p> 
