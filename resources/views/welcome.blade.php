@@ -178,7 +178,7 @@
             $("#qrcode").show();
              $("#result").html(       
           '<div class="content" data-aos="fade-left">'+
-            '<h3>Selemat anda sudah terdaftar sebagai peserta vaksinisasi</h3>'+
+            '<h3>Selamat anda sudah terdaftar sebagai peserta vaksin</h3>'+
             '<ul>'+
               '<li><i class="bi bi-check-circle"></i>Tanggal : '+data.waktu_vaksin+'</li>'+
               '<li><i class="bi bi-check-circle"></i>Jam : '+data.tanggal_vaksin+'</li>'+
@@ -196,7 +196,7 @@
             $("#qrcode").show();
              $("#result").html(       
           '<div class="content" data-aos="fade-left">'+
-            '<h3>Selemat anda sudah terdaftar sebagai peserta vaksinisasi</h3>'+
+            '<h3>Selamat anda sudah terdaftar sebagai peserta vaksin</h3>'+
             '<ul>'+
               '<li><i class="bi bi-check-circle"></i>Tanggal : '+data.waktu_vaksin+'</li>'+
               '<li><i class="bi bi-check-circle"></i>Jam : '+data.tanggal_vaksin+'</li>'+
