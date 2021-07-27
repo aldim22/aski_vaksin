@@ -146,36 +146,8 @@
                                     <td>{{ $p->tempat_lahir }}</td>
                                 </tr>
                                 <tr>
-                                    <th>Umur</th>
-                                    <td>{{ $p->umur }}</td>
-                                </tr>
-                                <tr>
                                     <th>Instansi</th>
                                     <td>{{ $p->instansi }}</td>
-                                </tr>
-                                <tr>
-                                    <th>Pekerjaan</th>
-                                    <td>{{ $p->jenis_pekerjaan }}</td>
-                                </tr>
-                                <tr>
-                                    <th>Kategori</th>
-                                    <td>{{ $p->kode_kategori }}</td>
-                                </tr>
-                                <tr>
-                                    <th>No. HP</th>
-                                    <td>{{ $p->no_hp }}</td>
-                                </tr>
-                                <tr>
-                                    <th>Alamat</th>
-                                    <td>{{ $p->alamat_ktp }}</td>
-                                </tr>
-                                <tr>
-                                    <th>Kode Pos</th>
-                                    <td>{{ $p->kode_pos }}</td>
-                                </tr>
-                                <tr>
-                                    <th>Kabupaten</th>
-                                    <td>{{ $p->kabupaten }}</td>
                                 </tr>
                                 <tr>
                                     <th>NIP</th>
@@ -192,18 +164,6 @@
                                 <tr>
                                     <th>Hubungan Keluarga</th>
                                     <td>{{ $p->hubungan_keluarga }}</td>
-                                </tr>
-                                <tr>
-                                    <th>Email</th>
-                                    <td class="text-lowercase">{{ $p->email }}</td>
-                                </tr>
-                                <tr>
-                                    <th>Status Kawin</th>
-                                    <td>{{ $p->status_kawin }}</td>
-                                </tr>
-                                <tr>
-                                    <th>Faskes</th>
-                                    <td>{{ $p->faskes }}</td>
                                 </tr>
                                 <tr>
                                     <th>Lokasi Vaksin</th>
