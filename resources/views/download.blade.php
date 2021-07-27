@@ -25,7 +25,7 @@
 </style>
 </head>
 <body>
-<center><h1>KARTU VASKIN</h1></center>
+<center><h1>KARTU VAKSIN</h1></center>
 <div class="row">
   <div class="column" style="">
    	<img src="data:image/png;base64, {!! $qrcode !!}">	
