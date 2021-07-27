@@ -33,8 +33,6 @@
   <div class="column" style="">
   <p>Nama : <b>{{ $peserta->name }}</b></p>
 	<p>Tanggal Lahir :<b>{{ $peserta->tanggal_lahir }}</b></p> 
-	<p>Umur : <b>{{ $peserta->umur }}</b></p> 
-	<p>Nip : <b>{{ $peserta->nip }}</b></p> 
 	<p>Nik : <b>{{ $peserta->nik }}</b></p> 
 	<p>Status : <b>{{ $peserta->status }}</b></p> 
 	<p>Hubungan Keluarga : <b>{{ $peserta->hubungan_keluarga }}</b></p> 
