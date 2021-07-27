@@ -180,6 +180,8 @@
           '<div class="content" data-aos="fade-left">'+
             '<h3>Selemat anda sudah terdaftar sebagai peserta vaksinisasi</h3>'+
             '<ul>'+
+              '<li><i class="bi bi-check-circle"></i>Tanggal : '+data.waktu_vaksin+'</li>'+
+              '<li><i class="bi bi-check-circle"></i>Jam : '+data.tanggal_vaksin+'</li>'+
               '<li><i class="bi bi-check-circle"></i>Nama : '+data.name+'</li>'+
               '<li><i class="bi bi-check-circle"></i>Tanggal Lahir : '+data.tanggal_lahir+'</li>'+
               '<li><i class="bi bi-check-circle"></i>Nik : '+data.nik+'</li>'+
@@ -196,6 +198,8 @@
           '<div class="content" data-aos="fade-left">'+
             '<h3>Selemat anda sudah terdaftar sebagai peserta vaksinisasi</h3>'+
             '<ul>'+
+              '<li><i class="bi bi-check-circle"></i>Tanggal : '+data.waktu_vaksin+'</li>'+
+              '<li><i class="bi bi-check-circle"></i>Jam : '+data.tanggal_vaksin+'</li>'+
               '<li><i class="bi bi-check-circle"></i>Nama : '+data.name+'</li>'+
               '<li><i class="bi bi-check-circle"></i>Tanggal Lahir : '+data.tanggal_lahir+'</li>'+
               '<li><i class="bi bi-check-circle"></i>Nik : '+data.nik+'</li>'+
