@@ -130,6 +130,14 @@
                                     <td>{{ $p->nik }}</td>
                                 </tr>
                                 <tr>
+                                    <th>Tanggal Vaksin</th>
+                                    <td class="text-capitalize">{{ $p->waktu_vaksin }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Jam</th>
+                                    <td class="text-capitalize">{{ $p->tanggal_vaksin }}</td>
+                                </tr>
+                                <tr>
                                     <th>Nama</th>
                                     <td class="text-capitalize">{{ $p->name }}</td>
                                 </tr>
