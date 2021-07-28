@@ -182,6 +182,7 @@
             '<ul>'+
               '<li><i class="bi bi-check-circle"></i>Tanggal : '+data.waktu_vaksin+'</li>'+
               '<li><i class="bi bi-check-circle"></i>Jam : '+data.tanggal_vaksin+'</li>'+
+              '<li><i class="bi bi-check-circle"></i>Lokasi Vaksin : 'ON SITE PT. ASKI'</li>'+
               '<li><i class="bi bi-check-circle"></i>Nama : '+data.name+'</li>'+
               '<li><i class="bi bi-check-circle"></i>Tanggal Lahir : '+data.tanggal_lahir+'</li>'+
               '<li><i class="bi bi-check-circle"></i>Nik : '+data.nik+'</li>'+
@@ -200,6 +201,7 @@
             '<ul>'+
               '<li><i class="bi bi-check-circle"></i>Tanggal : '+data.waktu_vaksin+'</li>'+
               '<li><i class="bi bi-check-circle"></i>Jam : '+data.tanggal_vaksin+'</li>'+
+              '<li><i class="bi bi-check-circle"></i>Lokasi Vaksin : 'ON SITE PT. ASKI'</li>'+
               '<li><i class="bi bi-check-circle"></i>Nama : '+data.name+'</li>'+
               '<li><i class="bi bi-check-circle"></i>Tanggal Lahir : '+data.tanggal_lahir+'</li>'+
               '<li><i class="bi bi-check-circle"></i>Nik : '+data.nik+'</li>'+
