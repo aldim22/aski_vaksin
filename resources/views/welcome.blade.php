@@ -53,6 +53,7 @@
         <div class="section-title">
           <h2>MASUKKAN NIK & CEK JADWAL VAKSIN ANDA</h2>
           <p>QR Code digunakan untuk registrasi saat di ASKI </p>
+          <p><b>Lokasi Vaksin di PT ASKI</b></p>
         </div>
 
          <form >
