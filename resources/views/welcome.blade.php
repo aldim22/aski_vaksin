@@ -210,7 +210,7 @@
             '</ul>'+
           '</div>');
         }else{
-              $('#result').html('<h1>Mohon maaf anda belum terdaftar</h1>');
+              $('#result').html('<h2>Mohon maaf anda belum terdaftar. Silahkan hubungi HR perusahaan Anda</h2>');
         }
 
         }
