@@ -46,30 +46,37 @@ class UploadController extends Controller
 
              for ($i=2; $i <= $rows; $i++) {
             $answers[] = [
-            'note'  => 'kosong',
-            'nik' =>$sheetData[$i]['B'],
-            'name'  => $sheetData[$i]['C'],
-            'jenis_kelamin' => $sheetData[$i]['D'],
-            'tanggal_lahir'  =>$sheetData[$i]['E'],
-            'umur' => $sheetData[$i]['F'],
-            'instansi' => $sheetData[$i]['G'],
-            'jenis_pekerjaan'  => $sheetData[$i]['H'],
-            'kode_kategori' => $sheetData[$i]['I'],
-            'no_hp' => $sheetData[$i]['J'],
-            'alamat_ktp'  => $sheetData[$i]['K'],
-            'kode_pos'  => $sheetData[$i]['L'],
-            'kabupaten' =>$sheetData[$i]['M'],
-            'nip'  => $sheetData[$i]['N'],
-            'ip' => $sheetData[$i]['O'],
-            'status'  =>$sheetData[$i]['P'],
-            'hubungan_keluarga' => $sheetData[$i]['Q'],
-            'email' => $sheetData[$i]['R'],
-            'tempat_lahir'  => $sheetData[$i]['S'],
-            'status_kawin' => $sheetData[$i]['T'],
-            'faskes' => $sheetData[$i]['U'],
-            'lokasi_vaksin'  => $sheetData[$i]['P'],
-            'customer_journey'  => $sheetData[$i]['W'],
-            'bagian'  => $sheetData[$i]['X'],
+             'note'  => 'kosong',
+            'nik' =>$sheetData[$i]['G'],
+            'name'  => $sheetData[$i]['H'],
+            'jenis_kelamin' => $sheetData[$i]['I'],
+            'tanggal_lahir'  =>$sheetData[$i]['J'],
+            'umur' => $sheetData[$i]['K'],
+            'instansi' => $sheetData[$i]['L'],
+            'jenis_pekerjaan'  => $sheetData[$i]['M'],
+            'kode_kategori' => $sheetData[$i]['N'],
+            'no_hp' => "-",
+            'alamat_ktp'  => "-",
+            'kode_pos'  => $sheetData[$i]['Q'],
+            'kabupaten' =>$sheetData[$i]['R'],
+            'nip'  => $sheetData[$i]['S'],
+            'ip' => $sheetData[$i]['T'],
+            'status'  =>$sheetData[$i]['U'],
+            'hubungan_keluarga' => $sheetData[$i]['V'],
+            'email' => $sheetData[$i]['W'],
+            'tempat_lahir'  => $sheetData[$i]['X'],
+            'status_kawin' => $sheetData[$i]['Y'],
+            'faskes' => $sheetData[$i]['Z'],
+            'lokasi_vaksin'  => $sheetData[$i]['AA'],
+            'customer_journey'  => $sheetData[$i]['AB'],
+            'bagian'  => $sheetData[$i]['D'],
+            'created_at'=>Carbon::now(),
+            'updated_at'=>Carbon::now(),
+            'status_regist'=>null,
+            'tanggal_regist'=>Carbon::now(),
+            'waktu_vaksin'=>$sheetData[$i]['E'],
+            'tanggal_vaksin'=>$sheetData[$i]['F'],
+            'keterangan'=>$sheetData[$i]['C'],
                 ];
             }
 
@@ -102,13 +109,15 @@ class UploadController extends Controller
                 'nip'=>$check->nip,
                 'status'=>$check->status,
                 'hubungan_keluarga'=>$check->hubungan_keluarga,
-                'tanggal_lahir'=>$check->tanggal_lahir
+                'tanggal_lahir'=>$check->tanggal_lahir,
+                'waktu_vaksin'=>$check->waktu_vaksin,
+                'tanggal_vaksin'=>$check->tanggal_vaksin
             ]);
            }else{
                
                 $insert = DB::table('submit_qr')->insert([
                     'nik'=>$request->nik,
-                    'qr'=>$request->nik.'-'.$check->tanggal_lahir.'.svg',
+                    'qr'=>$request->nik.'-'.$check->tanggal_lahir,
                     'created_at'=>Carbon::now(),
                     'updated_at'=>Carbon::now(),
                 ]);
@@ -124,7 +133,9 @@ class UploadController extends Controller
                         'nip'=>$check->nip,
                         'status'=>$check->status,
                         'hubungan_keluarga'=>$check->hubungan_keluarga,
-                        'tanggal_lahir'=>$check->tanggal_lahir
+                        'tanggal_lahir'=>$check->tanggal_lahir,
+                        'waktu_vaksin'=>$check->waktu_vaksin,
+                        'tanggal_vaksin'=>$check->tanggal_vaksin
                     ]);
                 }
                 

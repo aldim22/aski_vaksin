@@ -178,14 +178,14 @@
             $("#qrcode").show();
              $("#result").html(       
           '<div class="content" data-aos="fade-left">'+
-            '<h3>Selemat anda sudah terdaftar sebagai peserta vaksinisasi</h3>'+
+            '<h3>Selamat anda sudah terdaftar sebagai peserta vaksin</h3>'+
             '<ul>'+
+              '<li><i class="bi bi-check-circle"></i>Tanggal : '+data.waktu_vaksin+'</li>'+
+              '<li><i class="bi bi-check-circle"></i>Jam : '+data.tanggal_vaksin+'</li>'+
               '<li><i class="bi bi-check-circle"></i>Nama : '+data.name+'</li>'+
               '<li><i class="bi bi-check-circle"></i>Tanggal Lahir : '+data.tanggal_lahir+'</li>'+
-              '<li><i class="bi bi-check-circle"></i>Umur : '+data.umur+'</li>'+
-              '<li><i class="bi bi-check-circle"></i>Nip : '+data.nip+'</li>'+
               '<li><i class="bi bi-check-circle"></i>Nik : '+data.nik+'</li>'+
-              '<li><i class="bi bi-check-circle"></i>Status : '+data.nik+'</li>'+
+              '<li><i class="bi bi-check-circle"></i>Status : '+data.status+'</li>'+
               '<li><i class="bi bi-check-circle"></i>Hubungan Keluarga : '+data.hubungan_keluarga+'</li>'+
               '<a class="btn btn-success" href="download/'+data.id+'">Download</a>'+
             '</ul>'+
@@ -196,14 +196,14 @@
             $("#qrcode").show();
              $("#result").html(       
           '<div class="content" data-aos="fade-left">'+
-            '<h3>Selemat anda sudah terdaftar sebagai peserta vaksinisasi</h3>'+
+            '<h3>Selamat anda sudah terdaftar sebagai peserta vaksin</h3>'+
             '<ul>'+
+              '<li><i class="bi bi-check-circle"></i>Tanggal : '+data.waktu_vaksin+'</li>'+
+              '<li><i class="bi bi-check-circle"></i>Jam : '+data.tanggal_vaksin+'</li>'+
               '<li><i class="bi bi-check-circle"></i>Nama : '+data.name+'</li>'+
               '<li><i class="bi bi-check-circle"></i>Tanggal Lahir : '+data.tanggal_lahir+'</li>'+
-              '<li><i class="bi bi-check-circle"></i>Umur : '+data.umur+'</li>'+
-              '<li><i class="bi bi-check-circle"></i>Nip : '+data.nip+'</li>'+
               '<li><i class="bi bi-check-circle"></i>Nik : '+data.nik+'</li>'+
-              '<li><i class="bi bi-check-circle"></i>Status : '+data.nik+'</li>'+
+              '<li><i class="bi bi-check-circle"></i>Status : '+data.status+'</li>'+
               '<li><i class="bi bi-check-circle"></i>Hubungan Keluarga : '+data.hubungan_keluarga+'</li>'+
               '<a class="btn btn-success" href="download/'+data.id+'">Download</a>'+
             '</ul>'+
