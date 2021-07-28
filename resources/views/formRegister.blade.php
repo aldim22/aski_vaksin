@@ -98,7 +98,7 @@
                                 <form action="{{ route('getFormSearch') }}" method="post"> 
                                 @csrf
                                 <div class="input-group mb-3">
-                                    <input id="inputbyNIK" type="number" class="form-control" name="byNIK" placeholder="NIK" aria-describedby="button-addon2" autofocus required>
+                                    <input id="inputbyNIK" type="text" class="form-control" name="byNIK" placeholder="NIK" aria-describedby="button-addon2" autofocus required>
                                     <button class="btn btn-info" type="submit" id="button-addon2">Registrasi</button>
                                 </div>
                                 <div class="text-center">
