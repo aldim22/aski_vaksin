@@ -29,7 +29,7 @@
     <div class="container-fluid bg-img">
         <div class="row">
             <div class="col-sm-4 col-md-3 item">
-                <img src="assets/img/grin.png" alt="" width="300px" height="auto" style="padding-left:30px">
+                <img src="assets/img/grin.png" alt="" width="200px" height="auto" style="padding-left:60px">
                 <p style="padding-left:30px; text-align:center;">www.grin.co.id</p>
             </div>
             <div class="col-8">
@@ -201,7 +201,7 @@
                     <div class="col-sm-4 col-md-3 item">
                        
                     </div>
-                    <div class="col-lg-3 item social" style="margin-top: -30px;">
+                    <div class="col-sm-4 col-md-3 item social" style="margin-top: -30px;">
                         <a href="https://www.facebook.com/askigrin">
                             <i class="icon ion-social-facebook"></i>
                         </a>
