@@ -29,7 +29,7 @@
     <div class="container-fluid bg-img">
         <div class="row">
             <div class="col-sm-4 col-md-3 item">
-                <img src="assets/img/grin.png" alt="" width="200px" height="auto" style="padding-left:60px">
+                <img src="assets/img/grin.png" alt="" width="300px" height="auto" style="padding-left:80px">
                 <p style="padding-left:30px; text-align:center;">www.grin.co.id</p>
             </div>
             <div class="col-8">
@@ -198,10 +198,10 @@
         <footer>
             <div class="container">
                 <div class="row justify-content-center">
-                    <div class="col-sm-4 col-md-3 item">
+                    <div class="col-sm-4 item">
                        
                     </div>
-                    <div class="col-sm-4 col-md-3 item social" style="margin-top: -30px;">
+                    <div class="col-sm-4 item social">
                         <a href="https://www.facebook.com/askigrin">
                             <i class="icon ion-social-facebook"></i>
                         </a>
@@ -215,7 +215,7 @@
                         <p><a style="color: #3fbbc0; text-decoration: none; text-align:center" href="https://grin.co.id/">www.grin.co.id</a></p>
                         <p class="copyright" style="text-align:center">PT Astra Komponen Indonesia</p>
                     </div>
-                    <div class="col-sm-4 col-md-3 item" style="margin-top: -30px;">
+                    <div class="col-sm-4 item">
                         
                     </div>
                 </div>
