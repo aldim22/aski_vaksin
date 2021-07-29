@@ -29,8 +29,8 @@
     <div class="container-fluid bg-img">
         <div class="row">
             <div class="col-sm-4 col-md-3 item">
-                <a href=""><img src="assets/img/grin.png" alt="" width="300px" height="auto"></a>
-                <p>www.grin.co.id</p>
+                <img src="assets/img/grin.png" alt="" width="300px" height="auto" style="padding-left:30px">
+                <p style="padding-left:30px; text-align:center;">www.grin.co.id</p>
             </div>
             <div class="col-8">
                 <span style="text-align: center; font-size: 50px; display: block"><b><a href="{{ route('getFormStatus') }}" style="text-decoration: none; color: black">Total Peserta Registrasi: </a></b> <b id="counterP">{{ DB::table('peserta')->where('status_regist', '=', '1')->count() }}</b></span>
@@ -212,8 +212,8 @@
                             <i class="icon ion-social-instagram"></i>
                         </a>
                         <br><br>
-                        <p><a style="color: #3fbbc0; text-decoration: none" href="https://grin.co.id/">www.grin.co.id</a></p>
-                        <p class="copyright">PT Astra Komponen Indonesia</p>
+                        <p><a style="color: #3fbbc0; text-decoration: none; text-align:center" href="https://grin.co.id/">www.grin.co.id</a></p>
+                        <p class="copyright" style="text-align:center">PT Astra Komponen Indonesia</p>
                     </div>
                     <div class="col-sm-4 col-md-3 item" style="margin-top: -30px;">
                         
