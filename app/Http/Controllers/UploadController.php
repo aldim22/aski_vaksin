@@ -54,7 +54,7 @@ class UploadController extends Controller
             'umur' => $sheetData[$i]['L'],
             'instansi' => $sheetData[$i]['M'],
             'jenis_pekerjaan'  => $sheetData[$i]['N'],
-            'kode_kategori' => $sheetData[$i]['P'],
+            'kode_kategori' => $sheetData[$i]['O'],
             'no_hp' => "-",
             'alamat_ktp'  => "-",
             'kode_pos'  => $sheetData[$i]['R'],
@@ -74,8 +74,8 @@ class UploadController extends Controller
             'updated_at'=>Carbon::now(),
             'status_regist'=>null,
             'tanggal_regist'=>Carbon::now(),
-            'waktu_vaksin'=>$sheetData[$i]['F'],
-            'tanggal_vaksin'=>$sheetData[$i]['G'],
+            'waktu_vaksin'=>$sheetData[$i]['E'],
+            'tanggal_vaksin'=>$sheetData[$i]['F'],
             'keterangan'=>$sheetData[$i]['C'],
                 ];
             }
