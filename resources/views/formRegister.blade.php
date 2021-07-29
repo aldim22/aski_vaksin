@@ -28,9 +28,16 @@
 <body style="background-color: #f1f2f4">
     <div class="container-fluid bg-img">
         <div class="row">
-            <div class="col">
+            <div class="col-4">
+                <a href=""><img src="assets/img/grin.png" alt="" width="300px" height="auto"></a>
+                <p>www.grin.co.id</p>
+            </div>
+            <div class="col-8">
                 <span style="text-align: center; font-size: 50px; display: block"><b><a href="{{ route('getFormStatus') }}" style="text-decoration: none; color: black">Total Peserta Registrasi: </a></b> <b id="counterP">{{ DB::table('peserta')->where('status_regist', '=', '1')->count() }}</b></span>
                 <span style="text-align: center; font-size: 20px; margin-bottom: 15px;" class="d-block" id='ct7'></span>
+            </div>
+            <div class="col-3">
+            
             </div>
         </div>
         <div class="row content-section">
@@ -192,10 +199,9 @@
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-sm-4 col-md-3 item">
-                        <a href="https://grin.co.id/"><img src="assets/img/grin.png" alt="" width="300px" height="auto"></a>
+                       
                     </div>
-                    <div class="col-sm-4 col-md-3 item"></div>
-                    <div class="col-lg-3 item social" style="margin-top: -30px;">
+                    <div class="col-sm-4 col-md-3 item">
                         <a href="https://www.facebook.com/askigrin">
                             <i class="icon ion-social-facebook"></i>
                         </a>
@@ -208,6 +214,9 @@
                         <br><br>
                         <p><a style="color: #3fbbc0; text-decoration: none" href="https://grin.co.id/">www.grin.co.id</a></p>
                         <p class="copyright">PT Astra Komponen Indonesia</p>
+                    </div>
+                    <div class="col-lg-3 item social" style="margin-top: -30px;">
+                        
                     </div>
                 </div>
             </div>
