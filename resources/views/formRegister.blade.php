@@ -29,8 +29,8 @@
     <div class="container-fluid bg-img">
         <div class="row">
             <div class="col-sm-4 col-md-3 item">
-                <img src="assets/img/grin.png" alt="" width="300px" height="auto" style="padding-left:80px">
-                <p style="padding-left:30px; text-align:center;">www.grin.co.id</p>
+                <img src="assets/img/grin.png" alt="" width="300px" height="auto" style="padding-left:100px; padding-top:20px">
+                <p style="padding-left:80px; text-align:center;">www.grin.co.id</p>
             </div>
             <div class="col-8">
                 <span style="text-align: center; font-size: 50px; display: block"><b><a href="{{ route('getFormStatus') }}" style="text-decoration: none; color: black">Total Peserta Registrasi: </a></b> <b id="counterP">{{ DB::table('peserta')->where('status_regist', '=', '1')->count() }}</b></span>
@@ -202,15 +202,6 @@
                        
                     </div>
                     <div class="col-sm-4 item social">
-                        <a href="https://www.facebook.com/askigrin">
-                            <i class="icon ion-social-facebook"></i>
-                        </a>
-                        <a href="https://www.youtube.com/channel/grinbyaski">
-                            <i class="icon ion-social-youtube"></i>
-                        </a>
-                        <a href="https://www.instagram.com/aski_innovation/">
-                            <i class="icon ion-social-instagram"></i>
-                        </a>
                         <br><br>
                         <p><a style="color: #3fbbc0; text-decoration: none; text-align:center" href="https://grin.co.id/">www.grin.co.id</a></p>
                         <p class="copyright" style="text-align:center">PT Astra Komponen Indonesia</p>
