@@ -203,7 +203,6 @@
                     </div>
                     <div class="col-sm-4 item social">
                         <br><br>
-                        <p><a style="color: #3fbbc0; text-decoration: none; text-align:center" href="https://grin.co.id/">www.grin.co.id</a></p>
                         <p class="copyright" style="text-align:center">PT Astra Komponen Indonesia</p>
                     </div>
                     <div class="col-sm-4 item">
