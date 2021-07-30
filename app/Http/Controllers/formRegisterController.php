@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use PDF;
 use DB;
+use Excel;
+use App\Peserta;
+use App\Exports\peserta0Exports;
+use App\Exports\peserta1Exports;
 
 class formRegisterController extends Controller
 {
@@ -43,20 +46,14 @@ class formRegisterController extends Controller
         echo DB::table('peserta')->where('status_regist', '=', '1')->count();
     }
 
-    public function PDFStatus0() {
-        $status0 = DB::table('peserta')->where('status_regist', '=', '0')->get();
- 
-    	$pdf0 = PDF::loadview('status0', ['status0' => $status0]);
-
-    	return $pdf0->download('status-belum-regist-pdf.pdf');
+    public function excel0() {
+        $nama_file = 'status_belum_regist'.date('Y-m-d_H-i-s').'.xlsx';
+        return Excel::download(new peserta0Exports, $nama_file);
     }
 
-    public function PDFStatus1() {
-        $status1 = DB::table('peserta')->where('status_regist', '=', '1')->orderBy('tanggal_regist', 'desc')->get();
- 
-    	$pdf1 = PDF::loadview('status1', ['status1' => $status1]);
-
-    	return $pdf1->download('status-sudah-regist-pdf.pdf');
+    public function excel1() {
+        $nama_file = 'status_sudah_regist'.date('Y-m-d_H-i-s').'.xlsx';
+        return Excel::download(new peserta1Exports, $nama_file);
     }
 }
 

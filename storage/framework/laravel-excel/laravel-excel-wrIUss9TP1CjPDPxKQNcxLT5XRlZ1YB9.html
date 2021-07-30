@@ -35,19 +35,7 @@
             </tr>
         </thead>
         <tbody>
-        @foreach($status0 as $b)
-            <tr>
-                <td class="text-center" scope="row">{{ $loop->iteration }}</td>
-                <td scope="row">{{ $b->nik }}</td>
-                <td scope="row">{{ $b->name }}</td>
-                <td scope="row">{{ $b->jenis_kelamin }}</td>
-                <td scope="row">{{ $b->instansi }}</td>
-                <td class="text-center" scope="row"><b class="text-danger">Belum Registrasi</b></td>
-                <td class="text-center" scope="row">-</td>
-                <td>{{ $b->waktu_vaksin }} {{ $b->tanggal_vaksin }}</td>
-            </tr>
-        @endforeach
-        </tbody>
+                </tbody>
     </table>
 </body>
 

@@ -42,7 +42,7 @@
                     </h2>
                     <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                         <div class="accordion-body">
-                            <a href="{{ URL::to('/registrasi/status/1') }}"><button type="button" class="btn btn-success" id="btn-input" style="width: 100%"><i class="fas fa-print"></i> Cetak PDF</button></a><br><br>
+                            <a href="{{ URL::to('/registrasi/status/1') }}"><button type="button" class="btn btn-success" id="btn-input" style="width: 100%"><i class="fas fa-print"></i> Cetak Excel</button></a><br><br>
                             <table class="table table-bordered table-hover display nowrap" cellspacing="0" width="100%">
                                 <thead>
                                     <tr>
@@ -82,7 +82,7 @@
                     </h2>
                     <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
                         <div class="accordion-body">
-                            <a href="{{ URL::to('/registrasi/status/0') }}"><button type="button" class="btn btn-success" id="btn-input" style="width: 100%"><i class="fas fa-print"></i> Cetak PDF</button></a><br><br>
+                            <a href="{{ URL::to('/registrasi/status/0') }}"><button type="button" class="btn btn-success" id="btn-input" style="width: 100%"><i class="fas fa-print"></i> Cetak Excel</button></a><br><br>
                             <table class="table table-bordered table-hover display nowrap" cellspacing="0" width="100%">
                                 <thead>
                                     <tr>
