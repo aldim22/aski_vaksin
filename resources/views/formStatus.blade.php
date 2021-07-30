@@ -45,26 +45,26 @@
                             <table class="table table-bordered table-hover display nowrap" cellspacing="0" width="100%">
                                 <thead>
                                     <tr>
-                                        <th class="text-center" scope="col">No</th>
-                                        <th class="text-center" scope="col">NIK</th>
-                                        <th class="text-center" scope="col">Nama</th>
-                                        <th class="text-center" scope="col">Jenis Kelamin</th>
-                                        <th class="text-center" scope="col">Instansi</th>
-                                        <th class="text-center" scope="col">Status</th>
-                                        <th class="text-center" scope="col">Tanggal Registrasi</th>
-                                        <th class="text-center" scope="col">Jadwal Vaksin</th>
+                                        <th class="text-center">No</th>
+                                        <th class="text-center">NIK</th>
+                                        <th class="text-center">Nama</th>
+                                        <th class="text-center">Jenis Kelamin</th>
+                                        <th class="text-center">Instansi</th>
+                                        <th class="text-center">Status</th>
+                                        <th class="text-center">Tanggal Registrasi</th>
+                                        <th class="text-center">Jadwal Vaksin</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                 @foreach($sudah as $s)
                                     <tr>
-                                        <td class="text-center" scope="row">{{ $loop->iteration }}</td>
-                                        <td scope="row">{{ $s->nik }}</td>
-                                        <td scope="row">{{ $s->name }}</td>
-                                        <td scope="row">{{ $s->jenis_kelamin }}</td>
-                                        <td scope="row">{{ $s->instansi }}</td>
-                                        <td class="text-center" scope="row"><b class="text-center text-success">Sudah Registrasi</b></td>
-                                        <td class="text-center" scope="row">{{ $s->tanggal_regist }}</td>
+                                        <td class="text-center">{{ $loop->iteration }}</td>
+                                        <td class="text-center">{{ $s->nik }}</td>
+                                        <td class="text-center">{{ $s->name }}</td>
+                                        <td class="text-center">{{ $s->jenis_kelamin }}</td>
+                                        <td class="text-center">{{ $s->instansi }}</td>
+                                        <td class="text-center"><b class="text-center text-success">Sudah Registrasi</b></td>
+                                        <td class="text-center">{{ $s->tanggal_regist }}</td>
                                         <td>{{ $s->waktu_vaksin }} {{ $s->tanggal_vaksin }}</td>
                                     </tr>
                                 @endforeach
