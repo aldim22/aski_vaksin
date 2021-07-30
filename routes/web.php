@@ -26,4 +26,6 @@ Route::get('/registrasi',"formRegisterController@index") -> name('getForm');
 Route::post('/registrasi',"formRegisterController@search") -> name('getFormSearch');
 Route::get('/registrasi/count',"formRegisterController@counterP") -> name('getFormCounter');
 Route::get('/registrasi/status',"formRegisterController@indexStatus") -> name('getFormStatus');
+Route::get('/registrasi/status/0',"formRegisterController@PDFStatus0") -> name('getFormStatus0');
+Route::get('/registrasi/status/1',"formRegisterController@PDFStatus1") -> name('getFormStatus1');
 

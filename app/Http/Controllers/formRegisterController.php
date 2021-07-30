@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use PDF;
 use DB;
 
 class formRegisterController extends Controller
@@ -41,5 +42,21 @@ class formRegisterController extends Controller
     public function counterP() {
         echo DB::table('peserta')->where('status_regist', '=', '1')->count();
     }
-    
+
+    public function PDFStatus0() {
+        $status0 = DB::table('peserta')->where('status_regist', '=', '0')->get();
+ 
+    	$pdf0 = PDF::loadview('status0', ['status0' => $status0]);
+
+    	return $pdf0->download('status-belum-regist-pdf.pdf');
+    }
+
+    public function PDFStatus1() {
+        $status1 = DB::table('peserta')->where('status_regist', '=', '1')->orderBy('tanggal_regist', 'desc')->get();
+ 
+    	$pdf1 = PDF::loadview('status1', ['status1' => $status1]);
+
+    	return $pdf1->download('status-sudah-regist-pdf.pdf');
+    }
 }
+
