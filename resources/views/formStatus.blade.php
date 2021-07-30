@@ -52,6 +52,7 @@
                                         <th class="text-center" scope="col">Instansi</th>
                                         <th class="text-center" scope="col">Status</th>
                                         <th class="text-center" scope="col">Tanggal Registrasi</th>
+                                        <th class="text-center" scope="col">Jadwal Vaksin</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -64,7 +65,7 @@
                                         <td scope="row">{{ $s->instansi }}</td>
                                         <td class="text-center" scope="row"><b class="text-center text-success">Sudah Registrasi</b></td>
                                         <td class="text-center" scope="row">{{ $s->tanggal_regist }}</td>
-                                        </td>
+                                        <td>{{ $b->waktu_vaksin }} {{ $b->tanggal_vaksin }}</td>
                                     </tr>
                                 @endforeach
                                 </tbody>
@@ -90,6 +91,7 @@
                                         <th class="text-center" scope="col">Instansi</th>
                                         <th class="text-center" scope="col">Status</th>
                                         <th class="text-center" scope="col">Tanggal Registrasi</th>
+                                        <th class="text-center" scope="col">Jadwal Vaksin</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -102,7 +104,7 @@
                                         <td scope="row">{{ $b->instansi }}</td>
                                         <td class="text-center" scope="row"><b class="text-danger">Belum Registrasi</b></td>
                                         <td class="text-center" scope="row">-</td>
-                                        </td>
+                                        <td>{{ $b->waktu_vaksin }} {{ $b->tanggal_vaksin }}</td>
                                     </tr>
                                 @endforeach
                                 </tbody>
