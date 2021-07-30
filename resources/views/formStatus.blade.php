@@ -65,7 +65,7 @@
                                         <td scope="row">{{ $s->instansi }}</td>
                                         <td class="text-center" scope="row"><b class="text-center text-success">Sudah Registrasi</b></td>
                                         <td class="text-center" scope="row">{{ $s->tanggal_regist }}</td>
-                                        <td>{{ $b->waktu_vaksin }} {{ $b->tanggal_vaksin }}</td>
+                                        <td>{{ $b->waktu_vaksin }} {{ $s->tanggal_vaksin }}</td>
                                     </tr>
                                 @endforeach
                                 </tbody>
