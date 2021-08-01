@@ -5,7 +5,6 @@ namespace App\Exports;
 use App\Peserta;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\WithHeadings;
-use DB;
 
 class peserta0Exports implements FromCollection, WithHeadings
 {
