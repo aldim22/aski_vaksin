@@ -10,7 +10,12 @@ class peserta1Exports implements FromCollection, WithHeadings
 {
     public function collection()
     {
-        return Peserta::select('nik','name', 'jenis_kelamin', 'instansi', 'waktu_vaksin', 'tanggal_vaksin', 'tanggal_regist')->where('status_regist', '1')->get();
+        $collection = Peserta::select('nik','name', 'jenis_kelamin', 'instansi', 'waktu_vaksin', 'tanggal_vaksin', 'tanggal_regist')->where('status_regist', '1')->get();
+        $collection->map(function ($item, $key) {
+            $item->nik = "'" . $item->nik;
+            return $item;
+        });
+        return $collection;
     }
 
     public function headings(): array
