@@ -5,12 +5,18 @@ namespace App\Exports;
 use App\Peserta;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\WithHeadings;
+use DB;
 
 class peserta0Exports implements FromCollection, WithHeadings
 {
     public function collection()
     {
-        return Peserta::select('nik','name', 'jenis_kelamin', 'instansi', 'waktu_vaksin', 'tanggal_vaksin', 'tanggal_regist')->where('status_regist', '0')->get();
+        $collection = Peserta::select('nik','name', 'jenis_kelamin', 'instansi', 'waktu_vaksin', 'tanggal_vaksin', 'tanggal_regist')->where('status_regist', '0')->get();
+        $collection->map(function ($item, $key) {
+            $item->nik = "'" . $item->nik;
+            return $item;
+        });
+        return $collection;
     }
 
     public function headings(): array
