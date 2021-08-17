@@ -28,16 +28,20 @@
 <body style="background-color: #f1f2f4">
     <div class="container-fluid bg-img">
         <div class="row">
-            <div class="col-sm-4 col-md-3 item">
-                <img src="assets/img/grin.png" alt="" width="300px" height="auto" style="padding-left:100px; padding-top:20px">
-                <p style="padding-left:80px; text-align:center;">www.grin.co.id</p>
-            </div>
-            <div class="col-8">
-                <span style="text-align: center; font-size: 50px; display: block"><b><a href="{{ route('getFormStatus') }}" style="text-decoration: none; color: black">Total Peserta Registrasi: </a></b> <b id="counterP">{{ DB::table('peserta')->where('status_regist', '=', '1')->count() }}</b></span>
-                <span style="text-align: center; font-size: 20px; margin-bottom: 15px;" class="d-block" id='ct7'></span>
-            </div>
-            <div class="col-3">
-            
+            <div class="col">
+                <span style="text-align: center; font-size: 40px; display: block"><b><a href="{{ route('getFormStatus') }}" style="text-decoration: none; color: black">Total Peserta Registrasi: </a></b> <b id="counterP">{{ DB::table('peserta')->where('status_regist_2', '=', '1')->count() }}</b></span><hr>
+                <div class="row text-center">
+                    <div class="col">
+                        <b>Sabtu, 21 Agustus 2021</b><br>
+                        Dosis 1: <b>{{ DB::table('peserta')->where([['status_regist', '=', '1'], ['status_regist_2', '=', '0']])->whereDate('tanggal_regist', '=', '08-21-2021')->count() }}</b><br>
+                        Dosis 2: <b>{{ DB::table('peserta')->where([['status_regist', '=', '1'], ['status_regist_2', '=', '1']])->whereDate('tanggal_regist_2', '=', '08-21-2021')->count() }}</b>
+                    </div>
+                    <div class="col">
+                        <b>Minggu, 22 Agustus 2021</b><br>
+                        Dosis 1: <b>{{ DB::table('peserta')->where([['status_regist', '=', '1'], ['status_regist_2', '=', '0']])->whereDate('tanggal_regist', '=', '08-22-2021')->count() }}</b><br>
+                        Dosis 2: <b>{{ DB::table('peserta')->where([['status_regist', '=', '1'], ['status_regist_2', '=', '1']])->whereDate('tanggal_regist_2', '=', '08-22-2021')->count() }}</b>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="row content-section">
@@ -106,7 +110,7 @@
                                 @csrf
                                 <div class="input-group mb-3">
                                     <input id="inputbyNIK" type="text" class="form-control" name="byNIK" placeholder="NIK" aria-describedby="button-addon2" autofocus required>
-                                    <button class="btn btn-info" type="submit" id="button-addon2">Registrasi</button>
+                                    <button class="btn btn-secondary" type="submit" id="button-addon2">Registrasi</button>
                                 </div>
                                 <div class="text-center">
                                     <a href="{{ route('getForm') }}" style="text-decoration: none; color: gray">[Refresh]</a>
@@ -194,25 +198,6 @@
         </div>
     </div>
 
-    <div class="footer-clean">
-        <footer>
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-sm-4 item">
-                       
-                    </div>
-                    <div class="col-sm-4 item social">
-                        <br><br>
-                        <p class="copyright" style="text-align:center">PT Astra Komponen Indonesia</p>
-                    </div>
-                    <div class="col-sm-4 item">
-                        
-                    </div>
-                </div>
-            </div>
-        </footer>
-    </div>
-
     <script src="js/src/bootstrap.min.js"></script>
     <script src="js/src/jquery-3.6.0.min.js"></script>
     <script>
@@ -227,34 +212,6 @@
             });
         }
         getCount()
-    </script>
-    <script>
-        function display_ct7() {
-            var x = new Date()
-            var hours = x.getHours();
-            var minutes = x.getMinutes();
-            var seconds = x.getSeconds();
-            if(hours <10 ){hours='0'+hours;}
-            if(minutes <10 ) {minutes='0' + minutes; }
-            if(seconds<10){seconds='0' + seconds;}
-
-            var month=(x.getMonth() +1).toString();
-            month=month.length==1 ? 0+month : month;
-
-            var dt=x.getDate().toString();
-            dt=dt.length==1 ? 0+dt : dt;
-
-            var x1=x.getFullYear() + "/" + month + "/" + dt; 
-            x1 = x1 + " - " +  hours + ":" +  minutes + ":" +  seconds;
-            document.getElementById('ct7').innerHTML = x1;
-            display_c7();
-        }
-
-        function display_c7(){
-            var refresh=1000;
-            mytime=setTimeout('display_ct7()',refresh)
-        }
-        display_c7()
     </script>
 </body>
 
