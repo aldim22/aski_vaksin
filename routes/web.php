@@ -28,4 +28,8 @@ Route::get('/registrasi/count',"formRegisterController@counterP") -> name('getFo
 Route::get('/registrasi/status',"formRegisterController@indexStatus") -> name('getFormStatus');
 Route::get('/registrasi/status/0',"formRegisterController@excel0") -> name('getFormStatus0');
 Route::get('/registrasi/status/1',"formRegisterController@excel1") -> name('getFormStatus1');
+Route::get('/registrasi/status/2',"formRegisterController@excel2") -> name('getFormStatus2');
+Route::get('/registrasi/status/3',"formRegisterController@excel3") -> name('getFormStatus3');
+Route::get('/registrasi/status/4',"formRegisterController@excel4") -> name('getFormStatus4');
+Route::get('/registrasi/status/5',"formRegisterController@excel5") -> name('getFormStatus5');
 

@@ -29,7 +29,7 @@
     <div class="container-fluid bg-img">
         <div class="row">
             <div class="col">
-                <span style="text-align: center; font-size: 40px; display: block"><b><a href="{{ route('getFormStatus') }}" style="text-decoration: none; color: black">Total Peserta Registrasi: </a></b> <b id="counterP">{{ DB::table('peserta')->where('status_regist_2', '=', '1')->count() }}</b></span><hr>
+                <span style="text-align: center; font-size: 40px; display: block"><b><a href="{{ route('getFormStatus') }}" style="text-decoration: none; color: black">Total Peserta Registrasi: </a></b> <b id="counterP"></b></span><hr>
                 <div class="row text-center">
                     <div class="col">
                         <b>Sabtu, 21 Agustus 2021</b><br>
@@ -74,7 +74,7 @@
                                             &nbsp;
                                         </div>
                                     </div>
-                                    @elseif($peserta[0]->status_regist == 0)
+                                    @elseif($peserta[0]->status_regist == 0 && $peserta[0]->status_regist_2 == 0)
                                     <div class="alert alert-success" role="alert">
                                         <div class="alert-message text-center">
                                             <strong>{{ $s }}</strong><br>
@@ -86,12 +86,12 @@
                                             Tanggal Registrasi: {{ $date }}
                                         </div>
                                     </div>
-                                    @elseif($peserta[0]->status_regist == 1)
+                                    @else
                                     <div class="alert alert-warning" role="alert">
                                         <div class="alert-message text-center">
                                             <strong>{{ $d }}</strong><br>
                                             @foreach($peserta as $p)
-                                                 Tanggal Registrasi: {{ $p->tanggal_regist }}
+                                                 {{ $p->tanggal_regist }}, {{ $p->tanggal_regist_2 }}
                                             @endforeach
                                         </div>
                                     </div>
