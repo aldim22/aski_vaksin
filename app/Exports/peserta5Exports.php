@@ -6,7 +6,7 @@ use App\Peserta;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 
-class peserta1Exports implements FromCollection, WithHeadings
+class peserta5Exports implements FromCollection, WithHeadings
 {
     public function collection()
     {

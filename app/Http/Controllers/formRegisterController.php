@@ -8,6 +8,10 @@ use Excel;
 use App\Peserta;
 use App\Exports\peserta0Exports;
 use App\Exports\peserta1Exports;
+use App\Exports\peserta2Exports;
+use App\Exports\peserta3Exports;
+use App\Exports\peserta4Exports;
+use App\Exports\peserta5Exports;
 
 class formRegisterController extends Controller
 {
@@ -47,8 +51,8 @@ class formRegisterController extends Controller
                 return view('formRegister', ['peserta' => $peserta, 't' => $t]);
             } else if($peserta[0]->status_regist_2 == 0) {
                 if($peserta[0]->status_regist == 1) {
-                    if($peserta[0]->tanggal_regist == date('m/d/Y')) {
-                        $d = 'Data duplikat! Anda sudah registrasi ulang.';
+                    if($peserta[0]->tanggal_regist >= date('Y-m-d')) {
+                        $d = 'Anda sudah registrasi ulang.';
                         return view('formRegister', ['peserta' => $peserta, 'd' => $d]);
                     } else {
                         $status = DB::table('peserta')->select('peserta.*', 'submit_qr.*')->join('submit_qr', 'peserta.nik', '=', 'submit_qr.nik')->where(['submit_qr.qr' => $request->byNIK])->update([
@@ -56,6 +60,7 @@ class formRegisterController extends Controller
                             'tanggal_regist_2' => date('m/d/Y H:i:s', strtotime('+ 7 Hours'))
                         ]);
                         $s = 'Anda berhasil registrasi dosis 2.';
+                        return view('formRegister', ['peserta' => $peserta, 's' => $s]);
                     } 
                 } elseif($peserta[0]->status_regist == 0 && $peserta[0]->tanggal_regist < date('m/d/Y')) {
                     $status = DB::table('peserta')->select('peserta.*', 'submit_qr.*')->join('submit_qr', 'peserta.nik', '=', 'submit_qr.nik')->where(['submit_qr.qr' => $request->byNIK])->update([
@@ -63,13 +68,13 @@ class formRegisterController extends Controller
                         'tanggal_regist' => date('m/d/Y H:i:s', strtotime('+ 7 Hours'))
                     ]);
                     $s = 'Anda berhasil registrasi dosis 1.';
+                    return view('formRegister', ['peserta' => $peserta, 's' => $s]);
                 } else {
-                    $d = 'Data duplikat! Anda sudah registrasi ulang.';
+                    $d = 'Anda sudah registrasi ulang.';
                     return view('formRegister', ['peserta' => $peserta, 'd' => $d]);
                 }
-                return view('formRegister', ['peserta' => $peserta, 's' => $s, 'd' => $d]);
             } else {
-                $d = 'Data duplikat! Anda sudah registrasi ulang.';
+                $d = 'Anda sudah registrasi ulang.';
                 return view('formRegister', ['peserta' => $peserta, 'd' => $d]);
             }
         }
@@ -87,8 +92,8 @@ class formRegisterController extends Controller
     }
 
     public function counterP() {
-        $from = date('08-21-2021');
-        $to = date('08-22-2021');
+        $from = date('08-20-2021');
+        $to = date('08-23-2021');
         echo DB::table('peserta')->where(function($query) use ($from, $to){
             $query->whereBetween('tanggal_regist', [$from, $to])
                   ->orWhereBetween('tanggal_regist_2', [$from, $to]);
@@ -96,32 +101,32 @@ class formRegisterController extends Controller
     }
 
     public function excel0() {
-        $nama_file = 'status_belum_regist'.date('Y-m-d_H-i-s').'.xlsx';
+        $nama_file = 'status_belum_regist '.date('m-d-Y H:i:s', strtotime('+ 7 Hours')).'.xlsx';
         return Excel::download(new peserta0Exports, $nama_file);
     }
 
     public function excel1() {
-        $nama_file = '21-Agustus-2021 (Dosis 1)'.date('Y-m-d_H-i-s').'.xlsx';
+        $nama_file = '21-Agustus-2021 (Dosis 1) '.date('m-d-Y H:i:s', strtotime('+ 7 Hours')).'.xlsx';
         return Excel::download(new peserta1Exports, $nama_file);
     }
 
     public function excel2() {
-        $nama_file = '21-Agustus-2021 (Dosis 2)'.date('Y-m-d_H-i-s').'.xlsx';
+        $nama_file = '21-Agustus-2021 (Dosis 2) '.date('m-d-Y H:i:s', strtotime('+ 7 Hours')).'.xlsx';
         return Excel::download(new peserta2Exports, $nama_file);
     }
 
     public function excel3() {
-        $nama_file = '22-Agustus-2021 (Dosis 1)'.date('Y-m-d_H-i-s').'.xlsx';
+        $nama_file = '22-Agustus-2021 (Dosis 1) '.date('m-d-Y H:i:s', strtotime('+ 7 Hours')).'.xlsx';
         return Excel::download(new peserta3Exports, $nama_file);
     }
 
     public function excel4() {
-        $nama_file = '22-Agustus-2021 (Dosis 2)'.date('Y-m-d_H-i-s').'.xlsx';
+        $nama_file = '22-Agustus-2021 (Dosis 2) '.date('m-d-Y H:i:s', strtotime('+ 7 Hours')).'.xlsx';
         return Excel::download(new peserta4Exports, $nama_file);
     }
 
     public function excel5() {
-        $nama_file = 'status_sudah_regist'.date('Y-m-d_H-i-s').'.xlsx';
+        $nama_file = 'status_sudah_regist '.date('m-d-Y H:i:s', strtotime('+ 7 Hours')).'.xlsx';
         return Excel::download(new peserta5Exports, $nama_file);
     }
 }

@@ -29,7 +29,7 @@
     <div class="container-fluid bg-img">
         <div class="row">
             <div class="col">
-                <span style="text-align: center; font-size: 40px; display: block"><b><a href="{{ route('getFormStatus') }}" style="text-decoration: none; color: black">Total Peserta Registrasi: </a></b> <b id="counterP"></b></span><hr>
+                <span style="text-align: center; font-size: 40px; display: block"><b><a href="{{ route('getFormStatus') }}" style="text-decoration: none; color: black" target="_blank">Total Peserta Registrasi: </a></b> <b id="counterP"></b></span><hr>
                 <div class="row text-center">
                     <div class="col">
                         <b>Sabtu, 21 Agustus 2021</b><br>
@@ -51,14 +51,14 @@
                         <div class="col cover-card"></div>
                         <div class="col">
                             <div class="card-body">
-                                <h4 class="text-center">Form Registrasi ASKI Vaksin</h4>
+                                <h4 class="text-center">Form Registrasi</h4>
                                 <hr>
                                 <div class="text-center">
                                     <img class="avatar" src="{{ asset('assets/avatar.png') }}" alt="">
                                     <br>
                                     @if (isset($peserta))
                                         @foreach($peserta as $p)
-                                        <b>{{ $p->nik }}</b> - {{ $p->name }} - {{ $p->tanggal_lahir }}
+                                        <b>{{ $p->nik }}</b> - {{ $p->name }}
                                         @endforeach
                                     @endif
                                     @if (!isset($peserta))
@@ -74,25 +74,53 @@
                                             &nbsp;
                                         </div>
                                     </div>
-                                    @elseif($peserta[0]->status_regist == 0 && $peserta[0]->status_regist_2 == 0)
-                                    <div class="alert alert-success" role="alert">
-                                        <div class="alert-message text-center">
-                                            <strong>{{ $s }}</strong><br>
+                                    @elseif($peserta[0]->status_regist_2 == 0)
+                                        @if($peserta[0]->status_regist == 1)
+                                            @if($peserta[0]->tanggal_regist >= date('Y-m-d'))
+                                            <div class="alert alert-warning" role="alert">
+                                                <div class="alert-message text-center">
+                                                    <strong>{{ $d }}</strong><br>
+                                                    -
+                                                </div>
+                                            </div>
+                                            @else
+                                            <div class="alert alert-success" role="alert">
+                                                <div class="alert-message text-center">
+                                                    <strong>{{ $s }}</strong><br>
 
-                                            <?php
-                                                $date = date('Y/m/d H:i:s', strtotime('+ 7 Hours'));
-                                            ?>
+                                                    <?php
+                                                        $date = date('Y/m/d H:i:s', strtotime('+ 7 Hours'));
+                                                    ?>
 
-                                            Tanggal Registrasi: {{ $date }}
+                                                    Tanggal Registrasi: {{ $date }}
+                                                </div>
+                                            </div>
+                                            @endif
+                                        @elseif($peserta[0]->status_regist == 0 && $peserta[0]->tanggal_regist < date('m/d/Y'))
+                                        <div class="alert alert-success" role="alert">
+                                            <div class="alert-message text-center">
+                                                <strong>{{ $s }}</strong><br>
+
+                                                <?php
+                                                    $date = date('Y/m/d H:i:s', strtotime('+ 7 Hours'));
+                                                ?>
+
+                                                Tanggal Registrasi: {{ $date }}
+                                            </div>
                                         </div>
-                                    </div>
+                                        @else
+                                        <div class="alert alert-warning" role="alert">
+                                            <div class="alert-message text-center">
+                                                <strong>{{ $d }}</strong><br>
+                                                -
+                                            </div>
+                                        </div>
+                                        @endif
                                     @else
                                     <div class="alert alert-warning" role="alert">
                                         <div class="alert-message text-center">
                                             <strong>{{ $d }}</strong><br>
-                                            @foreach($peserta as $p)
-                                                 {{ $p->tanggal_regist }}, {{ $p->tanggal_regist_2 }}
-                                            @endforeach
+                                            -
                                         </div>
                                     </div>
                                     @endif
@@ -100,7 +128,7 @@
                                 @if (!isset($peserta))
                                 <div class="alert" style="background-color: #f1f2f4" role="alert">
                                     <div class="alert-message text-center">
-                                        <strong>Masukkan NIK anda dibawah ini:</strong><br>
+                                        <strong>Scan QR anda.</strong><br>
                                         -
                                     </div>
                                 </div>
@@ -159,10 +187,6 @@
                                 <tr>
                                     <th>Tanggal Lahir</th>
                                     <td>{{ $p->tanggal_lahir }}</td>
-                                </tr>
-                                <tr>
-                                    <th>Tempat Lahir</th>
-                                    <td>{{ $p->tempat_lahir }}</td>
                                 </tr>
                                 <tr>
                                     <th>Instansi</th>
