@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use DB;
 use Excel;
-use App\Peserta;
 use App\Exports\peserta0Exports;
 use App\Exports\peserta1Exports;
 use App\Exports\peserta2Exports;
@@ -45,59 +44,104 @@ class formRegisterController extends Controller
 
     public function search(Request $request) {
         if (isset($request->byNIK)) {
-            $peserta = DB::table('peserta')->select('peserta.*', 'submit_qr.*')->join('submit_qr', 'peserta.nik', '=', 'submit_qr.nik')->where(['submit_qr.qr' => $request->byNIK])->get();
+            $peserta = DB::table('detail_peserta')->select('detail_peserta.*', 'submit_qr.*')->join('submit_qr', 'detail_peserta.nik', '=', 'submit_qr.nik')->where(['submit_qr.qr' => $request->byNIK])->get();
             if ($peserta->isEmpty()) {
                 $t = 'NIK anda tidak terdaftar.';
                 return view('formRegister', ['peserta' => $peserta, 't' => $t]);
-            } else if($peserta[0]->status_regist_2 == 0) {
-                if($peserta[0]->status_regist == 1) {
-                    if($peserta[0]->tanggal_regist >= date('Y-m-d')) {
-                        $d = 'Anda sudah registrasi ulang.';
-                        return view('formRegister', ['peserta' => $peserta, 'd' => $d]);
-                    } else {
-                        $status = DB::table('peserta')->select('peserta.*', 'submit_qr.*')->join('submit_qr', 'peserta.nik', '=', 'submit_qr.nik')->where(['submit_qr.qr' => $request->byNIK])->update([
-                            'status_regist_2' => 1,
-                            'tanggal_regist_2' => date('m/d/Y H:i:s', strtotime('+ 7 Hours'))
-                        ]);
-                        $s = 'Anda berhasil registrasi dosis 2.';
-                        return view('formRegister', ['peserta' => $peserta, 's' => $s]);
-                    } 
-                } elseif($peserta[0]->status_regist == 0 && $peserta[0]->tanggal_regist < date('m/d/Y')) {
-                    $status = DB::table('peserta')->select('peserta.*', 'submit_qr.*')->join('submit_qr', 'peserta.nik', '=', 'submit_qr.nik')->where(['submit_qr.qr' => $request->byNIK])->update([
+            } elseif($peserta[0]->status_dosis == "Dosis 1") {
+                if($peserta[0]->status_regist == 0) {
+                    $status = DB::table('detail_peserta')->select('detail_peserta.*', 'submit_qr.*')->join('submit_qr', 'detail_peserta.nik', '=', 'submit_qr.nik')->where(['submit_qr.qr' => $request->byNIK])->update([
                         'status_regist' => 1,
-                        'tanggal_regist' => date('m/d/Y H:i:s', strtotime('+ 7 Hours'))
+                        'tgl_regist' => date('m/d/Y H:i:s', strtotime('+ 7 Hours'))
                     ]);
                     $s = 'Anda berhasil registrasi dosis 1.';
-                    return view('formRegister', ['peserta' => $peserta, 's' => $s]);
-                } else {
+                    return view('formRegister', ['peserta' => $peserta, 's' => $s]); 
+                } elseif($peserta[0]->status_regist == 1) {
                     $d = 'Anda sudah registrasi ulang.';
                     return view('formRegister', ['peserta' => $peserta, 'd' => $d]);
-                }
-            } else {
-                $d = 'Anda sudah registrasi ulang.';
-                return view('formRegister', ['peserta' => $peserta, 'd' => $d]);
+                } 
+            } elseif($peserta[0]->status_dosis == "Dosis 2") {
+                if($peserta[0]->status_regist == 0) {
+                    $status = DB::table('detail_peserta')->select('detail_peserta.*', 'submit_qr.*')->join('submit_qr', 'detail_peserta.nik', '=', 'submit_qr.nik')->where(['submit_qr.qr' => $request->byNIK])->update([
+                        'status_regist' => 2,
+                        'tgl_regist' => date('m/d/Y H:i:s', strtotime('+ 7 Hours'))
+                    ]);
+                    $s = 'Anda berhasil registrasi dosis 2.';
+                    return view('formRegister', ['peserta' => $peserta, 's' => $s]); 
+                } elseif($peserta[0]->status_regist == 2) {
+                    $d = 'Anda sudah registrasi ulang.';
+                    return view('formRegister', ['peserta' => $peserta, 'd' => $d]);
+                } 
             }
         }
     }
 
+    // public function search(Request $request) {
+    //     if (isset($request->byNIK)) {
+    //         $peserta = DB::table('peserta')->select('peserta.*', 'submit_qr.*')->join('submit_qr', 'peserta.nik', '=', 'submit_qr.nik')->where(['submit_qr.qr' => $request->byNIK])->get();
+    //         if ($peserta->isEmpty()) {
+    //             $t = 'NIK anda tidak terdaftar.';
+    //             return view('formRegister', ['peserta' => $peserta, 't' => $t]);
+    //         } else if($peserta[0]->status_regist_2 == 0) {
+    //             if($peserta[0]->status_regist == 1) {
+    //                 if($peserta[0]->tanggal_regist >= date('Y-m-d')) {
+    //                     $d = 'Anda sudah registrasi ulang.';
+    //                     return view('formRegister', ['peserta' => $peserta, 'd' => $d]);
+    //                 } else {
+    //                     $status = DB::table('peserta')->select('peserta.*', 'submit_qr.*')->join('submit_qr', 'peserta.nik', '=', 'submit_qr.nik')->where(['submit_qr.qr' => $request->byNIK])->update([
+    //                         'status_regist_2' => 1,
+    //                         'tanggal_regist_2' => date('m/d/Y H:i:s', strtotime('+ 7 Hours'))
+    //                     ]);
+    //                     $s = 'Anda berhasil registrasi dosis 2.';
+    //                     return view('formRegister', ['peserta' => $peserta, 's' => $s]);
+    //                 } 
+    //             } elseif($peserta[0]->status_regist == 0 && $peserta[0]->tanggal_regist < date('m/d/Y')) {
+    //                 $status = DB::table('peserta')->select('peserta.*', 'submit_qr.*')->join('submit_qr', 'peserta.nik', '=', 'submit_qr.nik')->where(['submit_qr.qr' => $request->byNIK])->update([
+    //                     'status_regist' => 1,
+    //                     'tanggal_regist' => date('m/d/Y H:i:s', strtotime('+ 7 Hours'))
+    //                 ]);
+    //                 $s = 'Anda berhasil registrasi dosis 1.';
+    //                 return view('formRegister', ['peserta' => $peserta, 's' => $s]);
+    //             } else {
+    //                 $d = 'Anda sudah registrasi ulang.';
+    //                 return view('formRegister', ['peserta' => $peserta, 'd' => $d]);
+    //             }
+    //         } else {
+    //             $d = 'Anda sudah registrasi ulang.';
+    //             return view('formRegister', ['peserta' => $peserta, 'd' => $d]);
+    //         }
+    //     }
+    // }
+
     public function indexStatus() {
-        $satu = DB::table('peserta')->where([['status_regist', '=', '1'], ['status_regist_2', '=', '0']])->whereDate('tanggal_regist', '=', '08-21-2021')->get();
-        $dua = DB::table('peserta')->where([['status_regist', '=', '1'], ['status_regist_2', '=', '1']])->whereDate('tanggal_regist_2', '=', '08-21-2021')->get();
-        $tiga = DB::table('peserta')->where([['status_regist', '=', '1'], ['status_regist_2', '=', '0']])->whereDate('tanggal_regist', '=', '08-22-2021')->get();
-        $empat = DB::table('peserta')->where([['status_regist', '=', '1'], ['status_regist_2', '=', '1']])->whereDate('tanggal_regist_2', '=', '08-22-2021')->get();
-        $lima = DB::table('peserta')->where('status_regist', '=', '1')->whereDate('tanggal_regist', '<', '08-21-2021')->get();
+        $satu = DB::table('detail_peserta')->where([['status_dosis', '=', 'Dosis 1'], ['status_regist', '=', '1']])->whereDate('tgl_regist', '=', '08-21-2021')->get();
+        $dua = DB::table('detail_peserta')->where([['status_dosis', '=', 'Dosis 2'], ['status_regist', '=', '2']])->whereDate('tgl_regist', '=', '08-21-2021')->get();
+        $tiga = DB::table('detail_peserta')->where([['status_dosis', '=', 'Dosis 1'], ['status_regist', '=', '1']])->whereDate('tgl_regist', '=', '08-22-2021')->get();
+        $empat = DB::table('detail_peserta')->where([['status_dosis', '=', 'Dosis 2'], ['status_regist', '=', '2']])->whereDate('tgl_regist', '=', '08-22-2021')->get();
+        $lima = DB::table('peserta')->where('status_regist', '=', '1')->get();
         $enam = DB::table('peserta')->where('status_regist', '=', '0')->get();
 
         return view('formStatus', ['satu' => $satu, 'dua' => $dua, 'tiga' => $tiga, 'empat' => $empat, 'lima' => $lima, 'enam' => $enam]);
     }
 
     public function counterP() {
-        $from = date('08-20-2021');
-        $to = date('08-23-2021');
-        echo DB::table('peserta')->where(function($query) use ($from, $to){
-            $query->whereBetween('tanggal_regist', [$from, $to])
-                  ->orWhereBetween('tanggal_regist_2', [$from, $to]);
-          })->count();
+        echo DB::table('detail_peserta')->where('status_regist', '=', '1')->orWhere('status_regist', '=', '2')->count();
+    }
+
+    public function counter121() {
+        echo DB::table('detail_peserta')->where([['status_dosis', '=', 'Dosis 1'], ['status_regist', '=', '1']])->whereDate('tgl_regist', '=', '08-21-2021')->count();
+    }
+
+    public function counter221() {
+        echo DB::table('detail_peserta')->where([['status_dosis', '=', 'Dosis 2'], ['status_regist', '=', '2']])->whereDate('tgl_regist', '=', '08-21-2021')->count();
+    }
+
+    public function counter122() {
+        echo DB::table('detail_peserta')->where([['status_dosis', '=', 'Dosis 1'], ['status_regist', '=', '1']])->whereDate('tgl_regist', '=', '08-22-2021')->count();
+    }
+
+    public function counter222() {
+        echo DB::table('detail_peserta')->where([['status_dosis', '=', 'Dosis 2'], ['status_regist', '=', '2']])->whereDate('tgl_regist', '=', '08-22-2021')->count();
     }
 
     public function excel0() {
@@ -106,22 +150,22 @@ class formRegisterController extends Controller
     }
 
     public function excel1() {
-        $nama_file = '21-Agustus-2021 (Dosis 1) '.date('m-d-Y H:i:s', strtotime('+ 7 Hours')).'.xlsx';
+        $nama_file = '22-Agustus-2021 (Dosis 1) '.date('m-d-Y H:i:s', strtotime('+ 7 Hours')).'.xlsx';
         return Excel::download(new peserta1Exports, $nama_file);
     }
 
     public function excel2() {
-        $nama_file = '21-Agustus-2021 (Dosis 2) '.date('m-d-Y H:i:s', strtotime('+ 7 Hours')).'.xlsx';
+        $nama_file = '22-Agustus-2021 (Dosis 2) '.date('m-d-Y H:i:s', strtotime('+ 7 Hours')).'.xlsx';
         return Excel::download(new peserta2Exports, $nama_file);
     }
 
     public function excel3() {
-        $nama_file = '22-Agustus-2021 (Dosis 1) '.date('m-d-Y H:i:s', strtotime('+ 7 Hours')).'.xlsx';
+        $nama_file = '21-Agustus-2021 (Dosis 1) '.date('m-d-Y H:i:s', strtotime('+ 7 Hours')).'.xlsx';
         return Excel::download(new peserta3Exports, $nama_file);
     }
 
     public function excel4() {
-        $nama_file = '22-Agustus-2021 (Dosis 2) '.date('m-d-Y H:i:s', strtotime('+ 7 Hours')).'.xlsx';
+        $nama_file = '21-Agustus-2021 (Dosis 2) '.date('m-d-Y H:i:s', strtotime('+ 7 Hours')).'.xlsx';
         return Excel::download(new peserta4Exports, $nama_file);
     }
 

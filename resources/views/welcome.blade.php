@@ -181,6 +181,7 @@
           '<div class="content" data-aos="fade-left">'+
             '<h3>Selamat anda sudah terdaftar sebagai peserta vaksin</h3>'+
             '<ul>'+
+            '<li><i class="bi bi-check-circle"></i>Dosis : '+data.status_dosis+'</li>'+
               '<li><i class="bi bi-check-circle"></i>Tanggal : '+data.waktu_vaksin+'</li>'+
               '<li><i class="bi bi-check-circle"></i>Jam : '+data.tanggal_vaksin+'</li>'+
               '<li><i class="bi bi-check-circle"></i>Lokasi Vaksin : PT ASKI</li>'+
@@ -200,6 +201,7 @@
           '<div class="content" data-aos="fade-left">'+
             '<h3>Selamat anda sudah terdaftar sebagai peserta vaksin</h3>'+
             '<ul>'+
+            '<li><i class="bi bi-check-circle"></i>Dosis : '+data.status_dosis+'</li>'+
               '<li><i class="bi bi-check-circle"></i>Tanggal : '+data.waktu_vaksin+'</li>'+
               '<li><i class="bi bi-check-circle"></i>Jam : '+data.tanggal_vaksin+'</li>'+
               '<li><i class="bi bi-check-circle"></i>Lokasi Vaksin : PT ASKI</li>'+

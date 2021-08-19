@@ -26,11 +26,11 @@
     <div class="container-fluid status-container">
 
         <?php
-            $count1 = DB::table('peserta')->where([['status_regist', '=', '1'], ['status_regist_2', '=', '0']])->whereDate('tanggal_regist', '=', '08-22-202')->count();
-            $count2 = DB::table('peserta')->where([['status_regist', '=', '1'], ['status_regist_2', '=', '1']])->whereDate('tanggal_regist_2', '=', '08-22-2021')->count();
-            $count3 = DB::table('peserta')->where([['status_regist', '=', '1'], ['status_regist_2', '=', '0']])->whereDate('tanggal_regist', '=', '08-21-2021')->count();
-            $count4 = DB::table('peserta')->where([['status_regist', '=', '1'], ['status_regist_2', '=', '1']])->whereDate('tanggal_regist_2', '=', '08-21-2021')->count();
-            $count5 = DB::table('peserta')->where('status_regist', '=', '1')->whereDate('tanggal_regist', '<', '08-21-2021')->count();
+            $count1 = DB::table('detail_peserta')->where([['status_dosis', '=', 'Dosis 1'], ['status_regist', '=', '1']])->whereDate('tgl_regist', '=', '08-21-2021')->count();
+            $count2 = DB::table('detail_peserta')->where([['status_dosis', '=', 'Dosis 2'], ['status_regist', '=', '2']])->whereDate('tgl_regist', '=', '08-21-2021')->count();
+            $count3 = DB::table('detail_peserta')->where([['status_dosis', '=', 'Dosis 1'], ['status_regist', '=', '1']])->whereDate('tgl_regist', '=', '08-22-2021')->count();
+            $count4 = DB::table('detail_peserta')->where([['status_dosis', '=', 'Dosis 2'], ['status_regist', '=', '2']])->whereDate('tgl_regist', '=', '08-22-2021')->count();
+            $count5 = DB::table('peserta')->where('status_regist', '=', '1')->count();
             $count6 = DB::table('peserta')->where('status_regist', '=', '0')->count();
         ?>
 
@@ -56,11 +56,10 @@
                                             <th class="text-center">No</th>
                                             <th class="text-center">NIK</th>
                                             <th class="text-center">Nama</th>
-                                            <th class="text-center">Jenis Kelamin</th>
-                                            <th class="text-center">Instansi</th>
-                                            <th class="text-center">Status</th>
+                                            <th class="text-center">Status Dosis</th>
+                                            <th class="text-center">Reservasi</th>
+                                            <th class="text-center">Slot</th>
                                             <th class="text-center">Tanggal Registrasi</th>
-                                            <th class="text-center">Jadwal Vaksin</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -68,12 +67,11 @@
                                         <tr>
                                             <td class="text-center">{{ $loop->iteration }}</td>
                                             <td class="text-center">{{ $sat->nik }}</td>
-                                            <td class="text-center">{{ $sat->name }}</td>
-                                            <td class="text-center">{{ $sat->jenis_kelamin }}</td>
-                                            <td class="text-center">{{ $sat->instansi }}</td>
-                                            <td class="text-center"><b class="text-center text-success">Dosis 1</b></td>
-                                            <td class="text-center">{{ $sat->tanggal_regist }}</td>
-                                            <td>{{ $sat->waktu_vaksin }} {{ $sat->tanggal_vaksin }}</td>
+                                            <td class="text-center">{{ $sat->nama }}</td>
+                                            <td class="text-center">{{ $sat->status_dosis }}</td>
+                                            <td class="text-center">{{ $sat->tgl_reservasi }}</td>
+                                            <td class="text-center">{{ $sat->slot }}</td>
+                                            <td class="text-center">{{ $sat->tgl_regist }}</td>
                                         </tr>
                                     @endforeach
                                     </tbody>
@@ -99,11 +97,10 @@
                                             <th class="text-center">No</th>
                                             <th class="text-center">NIK</th>
                                             <th class="text-center">Nama</th>
-                                            <th class="text-center">Jenis Kelamin</th>
-                                            <th class="text-center">Instansi</th>
-                                            <th class="text-center">Status</th>
+                                            <th class="text-center">Status Dosis</th>
+                                            <th class="text-center">Reservasi</th>
+                                            <th class="text-center">Slot</th>
                                             <th class="text-center">Tanggal Registrasi</th>
-                                            <th class="text-center">Jadwal Vaksin</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -111,12 +108,11 @@
                                         <tr>
                                             <td class="text-center">{{ $loop->iteration }}</td>
                                             <td class="text-center">{{ $du->nik }}</td>
-                                            <td class="text-center">{{ $du->name }}</td>
-                                            <td class="text-center">{{ $du->jenis_kelamin }}</td>
-                                            <td class="text-center">{{ $du->instansi }}</td>
-                                            <td class="text-center"><b class="text-center text-success">Dosis 2</b></td>
-                                            <td class="text-center">{{ $du->tanggal_regist_2 }}</td>
-                                            <td>{{ $du->waktu_vaksin }} {{ $du->tanggal_vaksin }}</td>
+                                            <td class="text-center">{{ $du->nama }}</td>
+                                            <td class="text-center">{{ $du->status_dosis }}</td>
+                                            <td class="text-center">{{ $du->tgl_reservasi }}</td>
+                                            <td class="text-center">{{ $du->slot }}</td>
+                                            <td class="text-center">{{ $du->tgl_regist }}</td>
                                         </tr>
                                     @endforeach
                                     </tbody>
@@ -142,11 +138,10 @@
                                             <th class="text-center">No</th>
                                             <th class="text-center">NIK</th>
                                             <th class="text-center">Nama</th>
-                                            <th class="text-center">Jenis Kelamin</th>
-                                            <th class="text-center">Instansi</th>
-                                            <th class="text-center">Status</th>
+                                            <th class="text-center">Status Dosis</th>
+                                            <th class="text-center">Reservasi</th>
+                                            <th class="text-center">Slot</th>
                                             <th class="text-center">Tanggal Registrasi</th>
-                                            <th class="text-center">Jadwal Vaksin</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -154,12 +149,11 @@
                                         <tr>
                                             <td class="text-center">{{ $loop->iteration }}</td>
                                             <td class="text-center">{{ $tig->nik }}</td>
-                                            <td class="text-center">{{ $tig->name }}</td>
-                                            <td class="text-center">{{ $tig->jenis_kelamin }}</td>
-                                            <td class="text-center">{{ $tig->instansi }}</td>
-                                            <td class="text-center"><b class="text-center text-success">Dosis 1</b></td>
-                                            <td class="text-center">{{ $tig->tanggal_regist }}</td>
-                                            <td>{{ $tig->waktu_vaksin }} {{ $tig->tanggal_vaksin }}</td>
+                                            <td class="text-center">{{ $tig->nama }}</td>
+                                            <td class="text-center">{{ $tig->status_dosis }}</td>
+                                            <td class="text-center">{{ $tig->tgl_reservasi }}</td>
+                                            <td class="text-center">{{ $tig->slot }}</td>
+                                            <td class="text-center">{{ $tig->tgl_regist }}</td>
                                         </tr>
                                     @endforeach
                                     </tbody>
@@ -185,24 +179,22 @@
                                             <th class="text-center">No</th>
                                             <th class="text-center">NIK</th>
                                             <th class="text-center">Nama</th>
-                                            <th class="text-center">Jenis Kelamin</th>
-                                            <th class="text-center">Instansi</th>
-                                            <th class="text-center">Status</th>
+                                            <th class="text-center">Status Dosis</th>
+                                            <th class="text-center">Reservasi</th>
+                                            <th class="text-center">Slot</th>
                                             <th class="text-center">Tanggal Registrasi</th>
-                                            <th class="text-center">Jadwal Vaksin</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                    @foreach($empat as $empa)
+                                    @foreach($empat as $emp)
                                         <tr>
                                             <td class="text-center">{{ $loop->iteration }}</td>
-                                            <td class="text-center">{{ $empa->nik }}</td>
-                                            <td class="text-center">{{ $empa->name }}</td>
-                                            <td class="text-center">{{ $empa->jenis_kelamin }}</td>
-                                            <td class="text-center">{{ $empa->instansi }}</td>
-                                            <td class="text-center"><b class="text-center text-success">Dosis 2</b></td>
-                                            <td class="text-center">{{ $empa->tanggal_regist_2 }}</td>
-                                            <td>{{ $empa->waktu_vaksin }} {{ $empa->tanggal_vaksin }}</td>
+                                            <td class="text-center">{{ $emp->nik }}</td>
+                                            <td class="text-center">{{ $emp->nama }}</td>
+                                            <td class="text-center">{{ $emp->status_dosis }}</td>
+                                            <td class="text-center">{{ $emp->tgl_reservasi }}</td>
+                                            <td class="text-center">{{ $emp->slot }}</td>
+                                            <td class="text-center">{{ $emp->tgl_regist }}</td>
                                         </tr>
                                     @endforeach
                                     </tbody>
@@ -216,7 +208,7 @@
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="headingFive">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="true" aria-controls="collapseFive">
-                            <span>30 Juli 2021 - 1 Agustus 2021<b>[{{ $count5 }}]</b></span>
+                            <span>30 Juli 2021 - 1 Agustus 2021 (Sudah) <b>[{{ $count5 }}]</b></span>
                         </button>
                         </h2>
                         <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#accordionExample">
@@ -259,7 +251,7 @@
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="headingSix">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
-                            <span>Belum Registrasi <b>[{{ $count6 }}]</b></span>
+                            <span>30 Juli 2021 - 1 Agustus 2021 (Belum) <b>[{{ $count6 }}]</b></span>
                         </button>
                         </h2>
                         <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#accordionExample">

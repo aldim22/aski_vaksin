@@ -33,13 +33,13 @@
                 <div class="row text-center">
                     <div class="col">
                         <b>Sabtu, 21 Agustus 2021</b><br>
-                        Dosis 1: <b>{{ DB::table('peserta')->where([['status_regist', '=', '1'], ['status_regist_2', '=', '0']])->whereDate('tanggal_regist', '=', '08-21-2021')->count() }}</b><br>
-                        Dosis 2: <b>{{ DB::table('peserta')->where([['status_regist', '=', '1'], ['status_regist_2', '=', '1']])->whereDate('tanggal_regist_2', '=', '08-21-2021')->count() }}</b>
+                        Dosis 1: <b>{{ DB::table('detail_peserta')->where([['status_dosis', '=', 'Dosis 1'], ['status_regist', '=', '1']])->whereDate('tgl_regist', '=', '08-19-2021')->count() }}</b><br>
+                        Dosis 2: <b>{{ DB::table('detail_peserta')->where([['status_dosis', '=', 'Dosis 2'], ['status_regist', '=', '2']])->whereDate('tgl_regist', '=', '08-19-2021')->count() }}</b>
                     </div>
                     <div class="col">
                         <b>Minggu, 22 Agustus 2021</b><br>
-                        Dosis 1: <b>{{ DB::table('peserta')->where([['status_regist', '=', '1'], ['status_regist_2', '=', '0']])->whereDate('tanggal_regist', '=', '08-22-2021')->count() }}</b><br>
-                        Dosis 2: <b>{{ DB::table('peserta')->where([['status_regist', '=', '1'], ['status_regist_2', '=', '1']])->whereDate('tanggal_regist_2', '=', '08-22-2021')->count() }}</b>
+                        Dosis 1: <b>{{ DB::table('detail_peserta')->where([['status_dosis', '=', 'Dosis 1'], ['status_regist', '=', '1']])->whereDate('tgl_regist', '=', '08-22-2021')->count() }}</b><br>
+                        Dosis 2: <b>{{ DB::table('detail_peserta')->where([['status_dosis', '=', 'Dosis 2'], ['status_regist', '=', '2']])->whereDate('tgl_regist', '=', '08-22-2021')->count() }}</b>
                     </div>
                 </div>
             </div>
@@ -58,7 +58,7 @@
                                     <br>
                                     @if (isset($peserta))
                                         @foreach($peserta as $p)
-                                        <b>{{ $p->nik }}</b> - {{ $p->name }}
+                                        <b>{{ $p->nik }}</b> - {{ $p->nama }}
                                         @endforeach
                                     @endif
                                     @if (!isset($peserta))
@@ -74,29 +74,8 @@
                                             &nbsp;
                                         </div>
                                     </div>
-                                    @elseif($peserta[0]->status_regist_2 == 0)
-                                        @if($peserta[0]->status_regist == 1)
-                                            @if($peserta[0]->tanggal_regist >= date('Y-m-d'))
-                                            <div class="alert alert-warning" role="alert">
-                                                <div class="alert-message text-center">
-                                                    <strong>{{ $d }}</strong><br>
-                                                    -
-                                                </div>
-                                            </div>
-                                            @else
-                                            <div class="alert alert-success" role="alert">
-                                                <div class="alert-message text-center">
-                                                    <strong>{{ $s }}</strong><br>
-
-                                                    <?php
-                                                        $date = date('Y/m/d H:i:s', strtotime('+ 7 Hours'));
-                                                    ?>
-
-                                                    Tanggal Registrasi: {{ $date }}
-                                                </div>
-                                            </div>
-                                            @endif
-                                        @elseif($peserta[0]->status_regist == 0 && $peserta[0]->tanggal_regist < date('m/d/Y'))
+                                    @elseif($peserta[0]->status_dosis == "Dosis 1")
+                                        @if($peserta[0]->status_regist == 0)
                                         <div class="alert alert-success" role="alert">
                                             <div class="alert-message text-center">
                                                 <strong>{{ $s }}</strong><br>
@@ -108,11 +87,36 @@
                                                 Tanggal Registrasi: {{ $date }}
                                             </div>
                                         </div>
-                                        @else
+                                        @elseif($peserta[0]->status_regist == 1)
                                         <div class="alert alert-warning" role="alert">
                                             <div class="alert-message text-center">
                                                 <strong>{{ $d }}</strong><br>
-                                                -
+                                                @foreach($peserta as $p)
+                                                Registrasi: <b>{{ $p->tgl_regist }}</b>
+                                                @endforeach
+                                            </div>
+                                        </div>
+                                        @endif
+                                    @elseif($peserta[0]->status_dosis == "Dosis 2")
+                                        @if($peserta[0]->status_regist == 0)
+                                        <div class="alert alert-success" role="alert">
+                                            <div class="alert-message text-center">
+                                                <strong>{{ $s }}</strong><br>
+
+                                                <?php
+                                                    $date = date('Y/m/d H:i:s', strtotime('+ 7 Hours'));
+                                                ?>
+
+                                                Tanggal Registrasi: {{ $date }}
+                                            </div>
+                                        </div>
+                                        @elseif($peserta[0]->status_regist == 2)
+                                        <div class="alert alert-warning" role="alert">
+                                            <div class="alert-message text-center">
+                                                <strong>{{ $d }}</strong><br>
+                                                @foreach($peserta as $p)
+                                                Registrasi: <b>{{ $p->tgl_regist }}</b>
+                                                @endforeach
                                             </div>
                                         </div>
                                         @endif
@@ -120,7 +124,9 @@
                                     <div class="alert alert-warning" role="alert">
                                         <div class="alert-message text-center">
                                             <strong>{{ $d }}</strong><br>
-                                            -
+                                            @foreach($peserta as $p)
+                                            Registrasi: <b>{{ $p->tgl_regist }}</b>
+                                            @endforeach
                                         </div>
                                     </div>
                                     @endif
@@ -169,48 +175,28 @@
                                     <td>{{ $p->nik }}</td>
                                 </tr>
                                 <tr>
-                                    <th>Tanggal Vaksin</th>
-                                    <td class="text-capitalize">{{ $p->waktu_vaksin }}</td>
-                                </tr>
-                                <tr>
-                                    <th>Jam</th>
-                                    <td class="text-capitalize">{{ $p->tanggal_vaksin }}</td>
-                                </tr>
-                                <tr>
                                     <th>Nama</th>
-                                    <td class="text-capitalize">{{ $p->name }}</td>
+                                    <td class="text-capitalize">{{ $p->nama }}</td>
                                 </tr>
                                 <tr>
-                                    <th>Jenis Kelamin</th>
-                                    <td>{{ $p->jenis_kelamin }}</td>
+                                    <th>Status Dosis</th>
+                                    <td><b>{{ $p->status_dosis }}</b></td>
                                 </tr>
                                 <tr>
-                                    <th>Tanggal Lahir</th>
-                                    <td>{{ $p->tanggal_lahir }}</td>
+                                    <th>Tanggal Reservasi</th>
+                                    <td>{{ $p->tgl_reservasi }}</td>
                                 </tr>
                                 <tr>
-                                    <th>Instansi</th>
-                                    <td>{{ $p->instansi }}</td>
+                                    <th>Slot</th>
+                                    <td>{{ $p->slot }}</td>
                                 </tr>
                                 <tr>
-                                    <th>NIP</th>
-                                    <td>{{ $p->nip }}</td>
+                                    <th>Note</th>
+                                    <td>{{ $p->note }}</td>
                                 </tr>
                                 <tr>
-                                    <th>IP</th>
-                                    <td>{{ $p->ip }}</td>
-                                </tr>
-                                <tr>
-                                    <th>Status</th>
-                                    <td>{{ $p->status }}</td>
-                                </tr>
-                                <tr>
-                                    <th>Hubungan Keluarga</th>
-                                    <td>{{ $p->hubungan_keluarga }}</td>
-                                </tr>
-                                <tr>
-                                    <th>Lokasi Vaksin</th>
-                                    <td>{{ $p->lokasi_vaksin }}</td>
+                                    <th>Email</th>
+                                    <td>{{ $p->email }}</td>
                                 </tr>
                             @endforeach
                             </tbody>
@@ -236,6 +222,54 @@
             });
         }
         getCount()
+
+        // function getCount121() {
+        //     $.ajax({
+        //         type: "GET",
+        //         url: "{{ route('getFormCounter121') }}"
+        //     })
+        //     .done(function( data ) {
+        //         $('#counterP121').html(data);
+        //         setTimeout(getCount121, 30000);
+        //     });
+        // }
+        // getCount121()
+
+        // function getCount221() {
+        //     $.ajax({
+        //         type: "GET",
+        //         url: "{{ route('getFormCounter221') }}"
+        //     })
+        //     .done(function( data ) {
+        //         $('#counterP221').html(data);
+        //         setTimeout(getCount221, 30000);
+        //     });
+        // }
+        // getCount221()
+
+        // function getCount122() {
+        //     $.ajax({
+        //         type: "GET",
+        //         url: "{{ route('getFormCounter122') }}"
+        //     })
+        //     .done(function( data ) {
+        //         $('#counterP122').html(data);
+        //         setTimeout(getCount122, 30000);
+        //     });
+        // }
+        // getCount122()
+
+        // function getCount222() {
+        //     $.ajax({
+        //         type: "GET",
+        //         url: "{{ route('getFormCounter222') }}"
+        //     })
+        //     .done(function( data ) {
+        //         $('#counterP222').html(data);
+        //         setTimeout(getCount222, 30000);
+        //     });
+        // }
+        // getCount222()
     </script>
 </body>
 
