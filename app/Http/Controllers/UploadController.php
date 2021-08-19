@@ -10,6 +10,7 @@ use PhpOffice\PhpSpreadsheet\Reader\IReadFilter;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 use Carbon\Carbon;
 use App\Models\Peserta;
+use App\Models\DetailPeserta;
 use App\Models\Submitqr;
 use PDF;
 class UploadController extends Controller
@@ -105,6 +106,7 @@ class UploadController extends Controller
                 'name'=>$check->nama,
                 'qr'=>$checksubmit->qr,
                 'nik'=>$check->nik,
+                 'status_dosis'=>$check->status_dosis,
                 // 'umur'=>$check->umur,
                 // 'nip'=>$check->nip,
                 // 'status'=>$check->status,
@@ -131,6 +133,7 @@ class UploadController extends Controller
                         'name'=>$check->nama,
                         'qr'=>$get->qr,
                         'nik'=>$check->nik,
+                         'status_dosis'=>$check->status_dosis,
                         // 'umur'=>$check->umur,
                         // 'nip'=>$check->nip,
                         // 'status'=>$check->status,
@@ -150,7 +153,7 @@ class UploadController extends Controller
    }
    public function download($nik)
    {
-       $peserta = Peserta::where('id',$nik)->first();
+       $peserta = DetailPeserta::where('id',$nik)->first();
        
        $submit = Submitqr::where('nik',$peserta->nik)->first();
        $qrcode = base64_encode(QrCode::format('svg')->size(200)->errorCorrection('H')->generate($submit->qr));
