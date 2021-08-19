@@ -92,7 +92,7 @@ class UploadController extends Controller
         return "success";
 
     }
-    public function submit_qr(Request $request)
+   public function submit_qr(Request $request)
     {
          //return response()->json(['success'=>'Generate Success']); 
         $check = DB::table('detail_peserta')->where('nik',$request->nik)->first();
@@ -111,7 +111,7 @@ class UploadController extends Controller
                 // 'nip'=>$check->nip,
                 // 'status'=>$check->status,
                 // 'hubungan_keluarga'=>$check->hubungan_keluarga,
-                // 'tanggal_lahir'=>$check->tanggal_lahir,
+                'tanggal_lahir'=>$check->tgl_lahir,
                 'waktu_vaksin'=>$check->tgl_reservasi,
                 'tanggal_vaksin'=>$check->slot
             ]);
@@ -119,7 +119,7 @@ class UploadController extends Controller
                
                 $insert = DB::table('submit_qr')->insert([
                     'nik'=>$request->nik,
-                    'qr'=>$request->nik.'-'.$check->nama,
+                    'qr'=>$request->nik.'-'.$check->tgl_lahir,
                     'created_at'=>Carbon::now(),
                     'updated_at'=>Carbon::now(),
                 ]);
@@ -138,8 +138,8 @@ class UploadController extends Controller
                         // 'nip'=>$check->nip,
                         // 'status'=>$check->status,
                         // 'hubungan_keluarga'=>$check->hubungan_keluarga,
-                        'tanggal_lahir'=>$check->tgl_reservasi,
-                        // 'waktu_vaksin'=>$check->waktu_vaksin,
+                        'tanggal_lahir'=>$check->tgl_lahir,
+                        'waktu_vaksin'=>$check->tgl_reservasi,
                         'tanggal_vaksin'=>$check->slot
                     ]);
                     }
