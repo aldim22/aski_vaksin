@@ -84,7 +84,7 @@
                                                     $date = date('Y/m/d H:i:s', strtotime('+ 7 Hours'));
                                                 ?>
 
-                                                Tanggal Registrasi: {{ $date }}
+                                                Registrasi: {{ $date }}
                                             </div>
                                         </div>
                                         @elseif($peserta[0]->status_regist == 1)
@@ -107,7 +107,7 @@
                                                     $date = date('Y/m/d H:i:s', strtotime('+ 7 Hours'));
                                                 ?>
 
-                                                Tanggal Registrasi: {{ $date }}
+                                                Registrasi: {{ $date }}
                                             </div>
                                         </div>
                                         @elseif($peserta[0]->status_regist == 2)
@@ -177,6 +177,10 @@
                                 <tr>
                                     <th>Nama</th>
                                     <td class="text-capitalize">{{ $p->nama }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Tanggal Lahir</th>
+                                    <td>{{ $p->tgl_lahir }}</td>
                                 </tr>
                                 <tr>
                                     <th>Status Dosis</th>

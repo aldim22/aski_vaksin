@@ -56,6 +56,7 @@
                                             <th class="text-center">No</th>
                                             <th class="text-center">NIK</th>
                                             <th class="text-center">Nama</th>
+                                            <th class="text-center">Tanggal Lahir</th>
                                             <th class="text-center">Status Dosis</th>
                                             <th class="text-center">Reservasi</th>
                                             <th class="text-center">Slot</th>
@@ -68,6 +69,7 @@
                                             <td class="text-center">{{ $loop->iteration }}</td>
                                             <td class="text-center">{{ $sat->nik }}</td>
                                             <td class="text-center">{{ $sat->nama }}</td>
+                                            <td class="text-center">{{ $sat->tgl_lahir }}</td>
                                             <td class="text-center">{{ $sat->status_dosis }}</td>
                                             <td class="text-center">{{ $sat->tgl_reservasi }}</td>
                                             <td class="text-center">{{ $sat->slot }}</td>
@@ -97,6 +99,7 @@
                                             <th class="text-center">No</th>
                                             <th class="text-center">NIK</th>
                                             <th class="text-center">Nama</th>
+                                            <th class="text-center">Tanggal Lahir</th>
                                             <th class="text-center">Status Dosis</th>
                                             <th class="text-center">Reservasi</th>
                                             <th class="text-center">Slot</th>
@@ -109,6 +112,7 @@
                                             <td class="text-center">{{ $loop->iteration }}</td>
                                             <td class="text-center">{{ $du->nik }}</td>
                                             <td class="text-center">{{ $du->nama }}</td>
+                                            <td class="text-center">{{ $du->tgl_lahir }}</td>
                                             <td class="text-center">{{ $du->status_dosis }}</td>
                                             <td class="text-center">{{ $du->tgl_reservasi }}</td>
                                             <td class="text-center">{{ $du->slot }}</td>
@@ -138,6 +142,7 @@
                                             <th class="text-center">No</th>
                                             <th class="text-center">NIK</th>
                                             <th class="text-center">Nama</th>
+                                            <th class="text-center">Tanggal Lahir</th>
                                             <th class="text-center">Status Dosis</th>
                                             <th class="text-center">Reservasi</th>
                                             <th class="text-center">Slot</th>
@@ -150,6 +155,7 @@
                                             <td class="text-center">{{ $loop->iteration }}</td>
                                             <td class="text-center">{{ $tig->nik }}</td>
                                             <td class="text-center">{{ $tig->nama }}</td>
+                                            <td class="text-center">{{ $tig->tgl_lahir }}</td>
                                             <td class="text-center">{{ $tig->status_dosis }}</td>
                                             <td class="text-center">{{ $tig->tgl_reservasi }}</td>
                                             <td class="text-center">{{ $tig->slot }}</td>
@@ -179,6 +185,7 @@
                                             <th class="text-center">No</th>
                                             <th class="text-center">NIK</th>
                                             <th class="text-center">Nama</th>
+                                            <th class="text-center">Tanggal Lahir</th>
                                             <th class="text-center">Status Dosis</th>
                                             <th class="text-center">Reservasi</th>
                                             <th class="text-center">Slot</th>
@@ -191,6 +198,7 @@
                                             <td class="text-center">{{ $loop->iteration }}</td>
                                             <td class="text-center">{{ $emp->nik }}</td>
                                             <td class="text-center">{{ $emp->nama }}</td>
+                                            <td class="text-center">{{ $emp->tgl_lahir }}</td>
                                             <td class="text-center">{{ $emp->status_dosis }}</td>
                                             <td class="text-center">{{ $emp->tgl_reservasi }}</td>
                                             <td class="text-center">{{ $emp->slot }}</td>
