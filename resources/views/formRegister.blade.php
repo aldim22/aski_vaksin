@@ -33,8 +33,8 @@
                 <div class="row text-center">
                     <div class="col">
                         <b>Sabtu, 21 Agustus 2021</b><br>
-                        Dosis 1: <b>{{ DB::table('detail_peserta')->where([['status_dosis', '=', 'Dosis 1'], ['status_regist', '=', '1']])->whereDate('tgl_regist', '=', '08-19-2021')->count() }}</b><br>
-                        Dosis 2: <b>{{ DB::table('detail_peserta')->where([['status_dosis', '=', 'Dosis 2'], ['status_regist', '=', '2']])->whereDate('tgl_regist', '=', '08-19-2021')->count() }}</b>
+                        Dosis 1: <b>{{ DB::table('detail_peserta')->where([['status_dosis', '=', 'Dosis 1'], ['status_regist', '=', '1']])->whereDate('tgl_regist', '=', '08-21-2021')->count() }}</b><br>
+                        Dosis 2: <b>{{ DB::table('detail_peserta')->where([['status_dosis', '=', 'Dosis 2'], ['status_regist', '=', '2']])->whereDate('tgl_regist', '=', '08-21-2021')->count() }}</b>
                     </div>
                     <div class="col">
                         <b>Minggu, 22 Agustus 2021</b><br>
