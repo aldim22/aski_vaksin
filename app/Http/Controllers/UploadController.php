@@ -109,8 +109,8 @@ class UploadController extends Controller
                  'status_dosis'=>$check->status_dosis,
                 // 'umur'=>$check->umur,
                 // 'nip'=>$check->nip,
-                // 'status'=>$check->status,
-                // 'hubungan_keluarga'=>$check->hubungan_keluarga,
+                'status'=>$check->status,
+                'hubungan_keluarga'=>$check->hubungan_keluarga,
                 'tanggal_lahir'=>$check->tgl_lahir,
                 'waktu_vaksin'=>$check->tgl_reservasi,
                 'tanggal_vaksin'=>$check->slot
@@ -136,8 +136,8 @@ class UploadController extends Controller
                          'status_dosis'=>$check->status_dosis,
                         // 'umur'=>$check->umur,
                         // 'nip'=>$check->nip,
-                        // 'status'=>$check->status,
-                        // 'hubungan_keluarga'=>$check->hubungan_keluarga,
+                        'status'=>$check->status,
+                        'hubungan_keluarga'=>$check->hubungan_keluarga,
                         'tanggal_lahir'=>$check->tgl_lahir,
                         'waktu_vaksin'=>$check->tgl_reservasi,
                         'tanggal_vaksin'=>$check->slot
