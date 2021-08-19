@@ -94,7 +94,7 @@ class UploadController extends Controller
     public function submit_qr(Request $request)
     {
          //return response()->json(['success'=>'Generate Success']); 
-        $check = DB::table('peserta')->where('nik',$request->nik)->first();
+        $check = DB::table('detail_peserta')->where('nik',$request->nik)->first();
         $checksubmit = DB::table('submit_qr')->where('nik',$request->nik)->first();
 
         if ($check ==true) {
@@ -102,41 +102,44 @@ class UploadController extends Controller
                return response()->json([
                 'success'=>'ada',
                 'id'=>$check->id,
-                'name'=>$check->name,
+                'name'=>$check->nama,
                 'qr'=>$checksubmit->qr,
                 'nik'=>$check->nik,
-                'umur'=>$check->umur,
-                'nip'=>$check->nip,
-                'status'=>$check->status,
-                'hubungan_keluarga'=>$check->hubungan_keluarga,
-                'tanggal_lahir'=>$check->tanggal_lahir,
-                'waktu_vaksin'=>$check->waktu_vaksin,
-                'tanggal_vaksin'=>$check->tanggal_vaksin
+                // 'umur'=>$check->umur,
+                // 'nip'=>$check->nip,
+                // 'status'=>$check->status,
+                // 'hubungan_keluarga'=>$check->hubungan_keluarga,
+                // 'tanggal_lahir'=>$check->tanggal_lahir,
+                'waktu_vaksin'=>$check->tgl_reservasi,
+                'tanggal_vaksin'=>$check->slot
             ]);
            }else{
                
                 $insert = DB::table('submit_qr')->insert([
                     'nik'=>$request->nik,
-                    'qr'=>$request->nik.'-'.$check->tanggal_lahir,
+                    'qr'=>$request->nik.'-'.$check->nama,
                     'created_at'=>Carbon::now(),
                     'updated_at'=>Carbon::now(),
                 ]);
                 if ($insert) {
                     $get = DB::table('submit_qr')->where('nik',$request->nik)->first();
+                    if ($get ==true) {
+                     
                     return response()->json([
                         'success'=>'berhasil',
                         'id'=>$check->id,
-                        'name'=>$check->name,
+                        'name'=>$check->nama,
                         'qr'=>$get->qr,
                         'nik'=>$check->nik,
-                        'umur'=>$check->umur,
-                        'nip'=>$check->nip,
-                        'status'=>$check->status,
-                        'hubungan_keluarga'=>$check->hubungan_keluarga,
-                        'tanggal_lahir'=>$check->tanggal_lahir,
-                        'waktu_vaksin'=>$check->waktu_vaksin,
-                        'tanggal_vaksin'=>$check->tanggal_vaksin
+                        // 'umur'=>$check->umur,
+                        // 'nip'=>$check->nip,
+                        // 'status'=>$check->status,
+                        // 'hubungan_keluarga'=>$check->hubungan_keluarga,
+                        'tanggal_lahir'=>$check->tgl_reservasi,
+                        // 'waktu_vaksin'=>$check->waktu_vaksin,
+                        'tanggal_vaksin'=>$check->slot
                     ]);
+                    }
                 }
                 
            }
