@@ -32,10 +32,11 @@
    	<img src="data:image/png;base64, {!! $qrcode !!}">	
   </div>
   <div class="column" style="">
+
   <p>Tanggal : <b>{{ $peserta->tgl_reservasi }}</b></p>
   <p>Jam : <b>{{ $peserta->slot }}</b></p>
   <p>Nama : <b>{{ $peserta->nama }}</b></p>
-	<!-- <p>Tanggal Lahir :<b>{{ $peserta->tanggal_lahir }}</b></p>  -->
+	<p>Tanggal Lahir :<b>{{ $peserta->tgl_lahir }}</b></p> 
 	<p>Nik : <b>{{ $peserta->nik }}</b></p> 
 	<!-- <p>Status : <b>{{ $peserta->status }}</b></p> 
 	<p>Hubungan Keluarga : <b>{{ $peserta->hubungan_keluarga }}</b></p>  -->
