@@ -132,6 +132,7 @@ class UploadController extends Controller
                 // 'nip'=>$check->nip,
                 'status'=>$check->status,
                 'hubungan_keluarga'=>$check->hubungan_keluarga,
+                'ip'=>$check->ip,
                 'tanggal_lahir'=>$check->tgl_lahir,
                 'waktu_vaksin'=>$check->tgl_reservasi,
                 'tanggal_vaksin'=>$check->slot
@@ -159,6 +160,7 @@ class UploadController extends Controller
                         // 'nip'=>$check->nip,
                         'status'=>$check->status,
                         'hubungan_keluarga'=>$check->hubungan_keluarga,
+                         'ip'=>$check->ip,
                         'tanggal_lahir'=>$check->tgl_lahir,
                         'waktu_vaksin'=>$check->tgl_reservasi,
                         'tanggal_vaksin'=>$check->slot
@@ -209,6 +211,35 @@ class UploadController extends Controller
           $data->delete();
       }
       return redirect()->back();
+   }
+   public function create_new_peserta(Request $request)
+   {
+    $data = DetailPeserta::create([
+        'nik'=>$request->nik,
+        'status_dosis'=>$request->status_dosis,
+        'nama'=>$request->nama,
+        'tgl_reservasi'=>$request->tgl_reservasi,
+        'slot'=>$request->slot,
+        'note'=>$request->note,
+        'email'=>$request->email,
+        'hubungan_keluarga'=>$request->hubungan_keluarga,
+        'status'=>$request->status,
+        'nip'=>$request->nip,
+        'no_hp'=>$request->no_hp,
+        'tempat_lahir'=>$request->tempat_lahir,
+        'jenis_kelamin'=>$request->jenis_kelamin,
+        'alamat_ktp'=>$request->alamat_ktp,
+        'status_kawin'=>$request->status_kawin,
+        'klinik'=>$request->klinik,
+        'lokasi'=>$request->lokasi,
+        'cj'=>$request->cj,
+        'ip'=>$request->ip
+    ]);
+return redirect('list');
+   }
+   public function create_new()
+   {
+    return view('upload.create');
    }
 
 }
