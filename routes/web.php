@@ -38,3 +38,5 @@ Route::get('/list', 'UploadController@list');
 Route::get('/edit/{id}', 'UploadController@edit');
 Route::get('/delete_peserta/{id}', 'UploadController@delete_peserta');
 Route::post('/update_peserta/{id}', 'UploadController@update_peserta');
+Route::post('/create_new_peserta', 'UploadController@create_new_peserta');
+Route::get('/create_new', 'UploadController@create_new');
