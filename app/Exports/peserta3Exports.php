@@ -2,7 +2,7 @@
 
 namespace App\Exports;
 
-use App\DetailPeserta;
+use App\Models\DetailPeserta;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 

@@ -24,9 +24,13 @@ Route::get('/download/{nik}', 'UploadController@download');
 
 Route::get('/registrasi',"formRegisterController@index") -> name('getForm');
 Route::post('/registrasi',"formRegisterController@search") -> name('getFormSearch');
+
+#COUNTER
+
 Route::get('/registrasi/count',"formRegisterController@counterP") -> name('getFormCounter');
+Route::get('/registrasi/countP',"formRegisterController@percentP") -> name('getFormCounterPercent');
+
 Route::get('/registrasi/status',"formRegisterController@indexStatus") -> name('getFormStatus');
-Route::get('/registrasi/status/0',"formRegisterController@excel0") -> name('getFormStatus0');
 Route::get('/registrasi/status/1',"formRegisterController@excel1") -> name('getFormStatus1');
 Route::get('/registrasi/status/2',"formRegisterController@excel2") -> name('getFormStatus2');
 Route::get('/registrasi/status/3',"formRegisterController@excel3") -> name('getFormStatus3');

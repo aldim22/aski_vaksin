@@ -29,17 +29,47 @@
     <div class="container-fluid bg-img">
         <div class="row">
             <div class="col">
-                <span style="text-align: center; font-size: 40px; display: block"><b><a href="{{ route('getFormStatus') }}" style="text-decoration: none; color: black" target="_blank">Total Peserta Registrasi: </a></b> <b id="counterP"></b></span><hr>
+                <span style="text-align: center; font-size: 40px; display: block"><b><a href="{{ route('getFormStatus') }}" style="text-decoration: none; color: black" target="_blank">Total Peserta Registrasi: </a></b> <b id="counterP"></b> <b style="font-weight: normal !important">(<span id="percentP"></span>%)</b></span><hr>
                 <div class="row text-center">
                     <div class="col">
                         <b>Sabtu, 21 Agustus 2021</b><br>
-                        Dosis 1: <b>{{ DB::table('detail_peserta')->where([['status_dosis', '=', 'Dosis 1'], ['status_regist', '=', '1']])->whereDate('tgl_regist', '=', '08-21-2021')->count() }}</b><br>
-                        Dosis 2: <b>{{ DB::table('detail_peserta')->where([['status_dosis', '=', 'Dosis 2'], ['status_regist', '=', '2']])->whereDate('tgl_regist', '=', '08-21-2021')->count() }}</b>
+
+                        <?php
+                            $totalP121 = DB::table('detail_peserta')->where([['status_dosis', '=', 'Dosis 1'], ['tgl_reservasi', '=', '21/Aug/21']])->count();
+                            $P121 = DB::table('detail_peserta')->where([['status_dosis', '=', 'Dosis 1'], ['status_regist', '=', '1']])->whereDate('tgl_regist', '=', '08-21-2021')->count();
+                            $percent121 = round($P121 / $totalP121 * 100, 2);
+                        ?>
+
+                        Dosis 1: <span><b>{{ $P121 }}</b> ({{ $percent121 }}%)</span><br>
+
+                        <?php
+                            $totalP221 = DB::table('detail_peserta')->where([['status_dosis', '=', 'Dosis 2'], ['tgl_reservasi', '=', '21/Aug/21']])->count();
+                            $P221 = DB::table('detail_peserta')->where([['status_dosis', '=', 'Dosis 2'], ['status_regist', '=', '2']])->whereDate('tgl_regist', '=', '08-21-2021')->count();
+                            $percent221 = round($P221 / $totalP221 * 100, 2);
+                        ?>
+
+                        Dosis 2: <span><b>{{ $P221 }}</b> ({{ $percent221 }}%)</span>
                     </div>
                     <div class="col">
                         <b>Minggu, 22 Agustus 2021</b><br>
-                        Dosis 1: <b>{{ DB::table('detail_peserta')->where([['status_dosis', '=', 'Dosis 1'], ['status_regist', '=', '1']])->whereDate('tgl_regist', '=', '08-22-2021')->count() }}</b><br>
-                        Dosis 2: <b>{{ DB::table('detail_peserta')->where([['status_dosis', '=', 'Dosis 2'], ['status_regist', '=', '2']])->whereDate('tgl_regist', '=', '08-22-2021')->count() }}</b>
+
+                        
+                        <?php
+                            $totalP122 = DB::table('detail_peserta')->where([['status_dosis', '=', 'Dosis 1'], ['tgl_reservasi', '=', '22/Aug/21']])->count();
+                            $P122 = DB::table('detail_peserta')->where([['status_dosis', '=', 'Dosis 1'], ['status_regist', '=', '1']])->whereDate('tgl_regist', '=', '08-22-2021')->count();
+                            $percent122 = round($P122 / $totalP122 * 100, 2);
+                        ?>
+
+                        Dosis 1: <span><b>{{ $P122 }}</b> ({{ $percent122 }}%)</span><br>
+
+                        
+                        <?php
+                            $totalP222 = DB::table('detail_peserta')->where([['status_dosis', '=', 'Dosis 2'], ['tgl_reservasi', '=', '22/Aug/21']])->count();
+                            $P222 = DB::table('detail_peserta')->where([['status_dosis', '=', 'Dosis 2'], ['status_regist', '=', '2']])->whereDate('tgl_regist', '=', '08-22-2021')->count();
+                            $percent222 = round($P222 / $totalP222 * 100, 2);
+                        ?>
+
+                        Dosis 2: <span><b>{{ $P222 }}</b> ({{ $percent222 }}%)</span>
                     </div>
                 </div>
             </div>
@@ -226,6 +256,18 @@
             });
         }
         getCount()
+
+        function getPercent() {
+            $.ajax({
+                type: "GET",
+                url: "{{ route('getFormCounterPercent') }}"
+            })
+            .done(function( data ) {
+                $('#percentP').html(data);
+                setTimeout(getPercent, 30000);
+            });
+        }
+        getPercent()
     </script>
 </body>
 

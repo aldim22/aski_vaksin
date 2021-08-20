@@ -30,8 +30,7 @@
             $count2 = DB::table('detail_peserta')->where([['status_dosis', '=', 'Dosis 2'], ['status_regist', '=', '2']])->whereDate('tgl_regist', '=', '08-21-2021')->count();
             $count3 = DB::table('detail_peserta')->where([['status_dosis', '=', 'Dosis 1'], ['status_regist', '=', '1']])->whereDate('tgl_regist', '=', '08-22-2021')->count();
             $count4 = DB::table('detail_peserta')->where([['status_dosis', '=', 'Dosis 2'], ['status_regist', '=', '2']])->whereDate('tgl_regist', '=', '08-22-2021')->count();
-            $count5 = DB::table('peserta')->where('status_regist', '=', '1')->count();
-            $count6 = DB::table('peserta')->where('status_regist', '=', '0')->count();
+            $count5 = DB::table('detail_peserta')->where('status_regist', '=', '0')->count();
         ?>
 
         <h3 class="text-center"><b>Status Registrasi</b></h3><br>
@@ -216,7 +215,7 @@
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="headingFive">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="true" aria-controls="collapseFive">
-                            <span>30 Juli 2021 - 1 Agustus 2021 (Sudah) <b>[{{ $count5 }}]</b></span>
+                            <span>21 Agustus 2021 - 22 Agustus 2021 (Belum Registrasi) <b>[{{ $count5 }}]</b></span>
                         </button>
                         </h2>
                         <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#accordionExample">
@@ -228,11 +227,10 @@
                                             <th class="text-center">No</th>
                                             <th class="text-center">NIK</th>
                                             <th class="text-center">Nama</th>
-                                            <th class="text-center">Jenis Kelamin</th>
-                                            <th class="text-center">Instansi</th>
-                                            <th class="text-center">Status</th>
-                                            <th class="text-center">Tanggal Registrasi</th>
-                                            <th class="text-center">Jadwal Vaksin</th>
+                                            <th class="text-center">Tanggal Lahir</th>
+                                            <th class="text-center">Status Dosis</th>
+                                            <th class="text-center">Reservasi</th>
+                                            <th class="text-center">Slot</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -240,55 +238,11 @@
                                         <tr>
                                             <td class="text-center">{{ $loop->iteration }}</td>
                                             <td class="text-center">{{ $lim->nik }}</td>
-                                            <td class="text-center">{{ $lim->name }}</td>
-                                            <td class="text-center">{{ $lim->jenis_kelamin }}</td>
-                                            <td class="text-center">{{ $lim->instansi }}</td>
-                                            <td class="text-center"><b class="text-center text-success">Sudah Registrasi</b></td>
-                                            <td class="text-center">{{ $lim->tanggal_regist }}</td>
-                                            <td>{{ $lim->waktu_vaksin }} {{ $lim->tanggal_vaksin }}</td>
-                                        </tr>
-                                    @endforeach
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- 6 -->
-
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="headingSix">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
-                            <span>30 Juli 2021 - 1 Agustus 2021 (Belum) <b>[{{ $count6 }}]</b></span>
-                        </button>
-                        </h2>
-                        <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#accordionExample">
-                            <div class="accordion-body">
-                                <a href="{{ URL::to('/registrasi/status/0') }}"><button type="button" class="btn btn-success" id="btn-input" style="width: 100%"><i class="fas fa-print"></i> Cetak Excel</button></a><br><br>
-                                <table class="table table-bordered table-hover display nowrap" cellspacing="0" width="100%">
-                                    <thead>
-                                        <tr>
-                                            <th class="text-center" scope="col">No</th>
-                                            <th class="text-center" scope="col">NIK</th>
-                                            <th class="text-center" scope="col">Nama</th>
-                                            <th class="text-center" scope="col">Jenis Kelamin</th>
-                                            <th class="text-center" scope="col">Instansi</th>
-                                            <th class="text-center" scope="col">Status</th>
-                                            <th class="text-center" scope="col">Tanggal Registrasi</th>
-                                            <th class="text-center" scope="col">Jadwal Vaksin</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                    @foreach($enam as $ena)
-                                        <tr>
-                                            <td class="text-center" scope="row">{{ $loop->iteration }}</td>
-                                            <td scope="row">{{ $ena->nik }}</td>
-                                            <td scope="row">{{ $ena->name }}</td>
-                                            <td scope="row">{{ $ena->jenis_kelamin }}</td>
-                                            <td scope="row">{{ $ena->instansi }}</td>
-                                            <td class="text-center" scope="row"><b class="text-danger">Belum Registrasi</b></td>
-                                            <td class="text-center" scope="row">-</td>
-                                            <td>{{ $ena->waktu_vaksin }} {{ $ena->tanggal_vaksin }}</td>
+                                            <td class="text-center">{{ $lim->nama }}</td>
+                                            <td class="text-center">{{ $lim->tgl_lahir }}</td>
+                                            <td class="text-center">{{ $lim->status_dosis }}</td>
+                                            <td class="text-center">{{ $lim->tgl_reservasi }}</td>
+                                            <td class="text-center">{{ $lim->slot }}</td>
                                         </tr>
                                     @endforeach
                                     </tbody>

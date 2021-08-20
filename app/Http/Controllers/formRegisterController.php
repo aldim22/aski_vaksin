@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use DB;
 use Excel;
-use App\Exports\peserta0Exports;
 use App\Exports\peserta1Exports;
 use App\Exports\peserta2Exports;
 use App\Exports\peserta3Exports;
@@ -118,19 +117,21 @@ class formRegisterController extends Controller
         $dua = DB::table('detail_peserta')->where([['status_dosis', '=', 'Dosis 2'], ['status_regist', '=', '2']])->whereDate('tgl_regist', '=', '08-21-2021')->get();
         $tiga = DB::table('detail_peserta')->where([['status_dosis', '=', 'Dosis 1'], ['status_regist', '=', '1']])->whereDate('tgl_regist', '=', '08-22-2021')->get();
         $empat = DB::table('detail_peserta')->where([['status_dosis', '=', 'Dosis 2'], ['status_regist', '=', '2']])->whereDate('tgl_regist', '=', '08-22-2021')->get();
-        $lima = DB::table('peserta')->where('status_regist', '=', '1')->get();
-        $enam = DB::table('peserta')->where('status_regist', '=', '0')->get();
+        $lima = DB::table('detail_peserta')->where('status_regist', '=', '0')->get();;
 
-        return view('formStatus', ['satu' => $satu, 'dua' => $dua, 'tiga' => $tiga, 'empat' => $empat, 'lima' => $lima, 'enam' => $enam]);
+        return view('formStatus', ['satu' => $satu, 'dua' => $dua, 'tiga' => $tiga, 'empat' => $empat, 'lima' => $lima]);
     }
 
     public function counterP() {
         echo DB::table('detail_peserta')->where('status_regist', '=', '1')->orWhere('status_regist', '=', '2')->count();
     }
 
-    public function excel0() {
-        $nama_file = 'status_belum_regist '.date('m-d-Y H:i:s', strtotime('+ 7 Hours')).'.xlsx';
-        return Excel::download(new peserta0Exports, $nama_file);
+    public function percentP() {
+        $total = DB::table('detail_peserta')->count();
+        $totalP = DB::table('detail_peserta')->where('status_regist', '=', '1')->orWhere('status_regist', '=', '2')->count();
+        $percentP = round($totalP / $total * 100, 2);
+
+        echo $percentP;
     }
 
     public function excel1() {
@@ -154,7 +155,7 @@ class formRegisterController extends Controller
     }
 
     public function excel5() {
-        $nama_file = 'status_sudah_regist '.date('m-d-Y H:i:s', strtotime('+ 7 Hours')).'.xlsx';
+        $nama_file = '2122-Agustus-2021-belum-regist '.date('m-d-Y H:i:s', strtotime('+ 7 Hours')).'.xlsx';
         return Excel::download(new peserta5Exports, $nama_file);
     }
 }
