@@ -128,22 +128,6 @@ class formRegisterController extends Controller
         echo DB::table('detail_peserta')->where('status_regist', '=', '1')->orWhere('status_regist', '=', '2')->count();
     }
 
-    public function counter121() {
-        echo DB::table('detail_peserta')->where([['status_dosis', '=', 'Dosis 1'], ['status_regist', '=', '1']])->whereDate('tgl_regist', '=', '08-21-2021')->count();
-    }
-
-    public function counter221() {
-        echo DB::table('detail_peserta')->where([['status_dosis', '=', 'Dosis 2'], ['status_regist', '=', '2']])->whereDate('tgl_regist', '=', '08-21-2021')->count();
-    }
-
-    public function counter122() {
-        echo DB::table('detail_peserta')->where([['status_dosis', '=', 'Dosis 1'], ['status_regist', '=', '1']])->whereDate('tgl_regist', '=', '08-22-2021')->count();
-    }
-
-    public function counter222() {
-        echo DB::table('detail_peserta')->where([['status_dosis', '=', 'Dosis 2'], ['status_regist', '=', '2']])->whereDate('tgl_regist', '=', '08-22-2021')->count();
-    }
-
     public function excel0() {
         $nama_file = 'status_belum_regist '.date('m-d-Y H:i:s', strtotime('+ 7 Hours')).'.xlsx';
         return Excel::download(new peserta0Exports, $nama_file);

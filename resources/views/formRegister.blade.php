@@ -226,54 +226,6 @@
             });
         }
         getCount()
-
-        // function getCount121() {
-        //     $.ajax({
-        //         type: "GET",
-        //         url: "{{ route('getFormCounter121') }}"
-        //     })
-        //     .done(function( data ) {
-        //         $('#counterP121').html(data);
-        //         setTimeout(getCount121, 30000);
-        //     });
-        // }
-        // getCount121()
-
-        // function getCount221() {
-        //     $.ajax({
-        //         type: "GET",
-        //         url: "{{ route('getFormCounter221') }}"
-        //     })
-        //     .done(function( data ) {
-        //         $('#counterP221').html(data);
-        //         setTimeout(getCount221, 30000);
-        //     });
-        // }
-        // getCount221()
-
-        // function getCount122() {
-        //     $.ajax({
-        //         type: "GET",
-        //         url: "{{ route('getFormCounter122') }}"
-        //     })
-        //     .done(function( data ) {
-        //         $('#counterP122').html(data);
-        //         setTimeout(getCount122, 30000);
-        //     });
-        // }
-        // getCount122()
-
-        // function getCount222() {
-        //     $.ajax({
-        //         type: "GET",
-        //         url: "{{ route('getFormCounter222') }}"
-        //     })
-        //     .done(function( data ) {
-        //         $('#counterP222').html(data);
-        //         setTimeout(getCount222, 30000);
-        //     });
-        // }
-        // getCount222()
     </script>
 </body>
 
