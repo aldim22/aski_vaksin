@@ -47,37 +47,58 @@ class UploadController extends Controller
 
              for ($i=3; $i <= $rows; $i++) {
             $answers[] = [
-             'note'  => 'kosong',
-            'nik' =>$sheetData[$i]['G'],
-            'name'  => $sheetData[$i]['I'],
-            'jenis_kelamin' => $sheetData[$i]['J'],
-            'tanggal_lahir'  =>$sheetData[$i]['K'],
-            'umur' => $sheetData[$i]['L'],
-            'instansi' => $sheetData[$i]['M'],
-            'jenis_pekerjaan'  => $sheetData[$i]['N'],
-            'kode_kategori' => $sheetData[$i]['O'],
-            'no_hp' => "-",
-            'alamat_ktp'  => "-",
-            'kode_pos'  => $sheetData[$i]['R'],
-            'kabupaten' =>$sheetData[$i]['S'],
-            'nip'  => $sheetData[$i]['T'],
-            'ip' => $sheetData[$i]['U'],
-            'status'  =>$sheetData[$i]['V'],
-            'hubungan_keluarga' => $sheetData[$i]['W'],
-            'email' => $sheetData[$i]['X'],
-            'tempat_lahir'  => $sheetData[$i]['Y'],
-            'status_kawin' => $sheetData[$i]['Z'],
-            'faskes' => $sheetData[$i]['AA'],
-            'lokasi_vaksin'  => "ON SITE PT. ASKI",
-            'customer_journey'  => $sheetData[$i]['AC'],
-            'bagian'  => $sheetData[$i]['D'],
-            'created_at'=>Carbon::now(),
-            'updated_at'=>Carbon::now(),
-            'status_regist'=>null,
-            'tanggal_regist'=>Carbon::now(),
-            'waktu_vaksin'=>$sheetData[$i]['E'],
-            'tanggal_vaksin'=>$sheetData[$i]['F'],
-            'keterangan'=>$sheetData[$i]['C'],
+            //  'note'  => 'kosong',
+            // 'nik' =>$sheetData[$i]['G'],
+            // 'name'  => $sheetData[$i]['I'],
+            // 'jenis_kelamin' => $sheetData[$i]['J'],
+            // 'tanggal_lahir'  =>$sheetData[$i]['K'],
+            // 'umur' => $sheetData[$i]['L'],
+            // 'instansi' => $sheetData[$i]['M'],
+            // 'jenis_pekerjaan'  => $sheetData[$i]['N'],
+            // 'kode_kategori' => $sheetData[$i]['O'],
+            // 'no_hp' => "-",
+            // 'alamat_ktp'  => "-",
+            // 'kode_pos'  => $sheetData[$i]['R'],
+            // 'kabupaten' =>$sheetData[$i]['S'],
+            // 'nip'  => $sheetData[$i]['T'],
+            // 'ip' => $sheetData[$i]['U'],
+            // 'status'  =>$sheetData[$i]['V'],
+            // 'hubungan_keluarga' => $sheetData[$i]['W'],
+            // 'email' => $sheetData[$i]['X'],
+            // 'tempat_lahir'  => $sheetData[$i]['Y'],
+            // 'status_kawin' => $sheetData[$i]['Z'],
+            // 'faskes' => $sheetData[$i]['AA'],
+            // 'lokasi_vaksin'  => "ON SITE PT. ASKI",
+            // 'customer_journey'  => $sheetData[$i]['AC'],
+            // 'bagian'  => $sheetData[$i]['D'],
+            // 'created_at'=>Carbon::now(),
+            // 'updated_at'=>Carbon::now(),
+            // 'status_regist'=>null,
+            // 'tanggal_regist'=>Carbon::now(),
+            // 'waktu_vaksin'=>$sheetData[$i]['E'],
+            // 'tanggal_vaksin'=>$sheetData[$i]['F'],
+            // 'keterangan'=>$sheetData[$i]['C'],
+            'nik'=>$sheetData[$i]['G'],
+            'status_dosis'=>$sheetData[$i]['A'],
+            'nama'=>$sheetData[$i]['J'],
+            'tgl_reservasi'=>$sheetData[$i]['S'],
+            'slot'=>$sheetData[$i]['T'],
+            'note'=>$sheetData[$i]['U'],
+            'email'=>$sheetData[$i]['I'],
+            'tgl_lahir'=>$sheetData[$i]['L'],
+            'hubungan_keluarga'=>$sheetData[$i]['E'],
+            'status'=>$sheetData[$i]['D'],
+            'ip' => $sheetData[$i]['B'],
+            'nip'=> $sheetData[$i]['C'],
+            'no_hp'=> $sheetData[$i]['H'],
+            'tempat_lahir'=> $sheetData[$i]['K'],
+            'jenis_kelamin'=> $sheetData[$i]['M'],
+            'status_kawin'=> $sheetData[$i]['N'],
+            'alamat_ktp'=> $sheetData[$i]['O'],
+            'klinik'=> $sheetData[$i]['P'],
+            'lokasi'=> $sheetData[$i]['Q'],
+            'cj'=>  $sheetData[$i]['R'],
+
                 ];
             }
 
@@ -87,7 +108,7 @@ class UploadController extends Controller
 
         foreach ($chunks as $chunk)
         {
-            \DB::table('peserta')->insert($chunk->toArray());
+            \DB::table('detail_peserta')->insert($chunk->toArray());
         }
         return "success";
 
@@ -161,6 +182,33 @@ class UploadController extends Controller
         $pdf = PDF::loadview('download',['qrcode'=>$qrcode,'peserta'=>$peserta]);
         return $pdf->download('kartu_vaksin_'.$peserta->nik.'.pdf');
    }
+   public function edit($id)
+   {
+    $data = DetailPeserta::find($id);
+    return view('upload.edit',compact('data'));
+   }
+   public function list()
+   {
 
+    $data = DetailPeserta::all();
+     return view('upload.list',compact('data'));
+   }
+   public function update_peserta(Request $request,$id)
+   {
+    $data = DetailPeserta::where('id',$id)->update([
+        'nama'=>$request->nama,
+        'nik'=>$request->nik
+    ]);
+
+    return redirect('list');
+   }
+   public function delete_peserta($id)
+   {
+      $data = DetailPeserta::find($id);
+      if ($data) {
+          $data->delete();
+      }
+      return redirect()->back();
+   }
 
 }
