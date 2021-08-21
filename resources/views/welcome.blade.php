@@ -190,6 +190,7 @@
               '<li><i class="bi bi-check-circle"></i>Nik : '+data.nik+'</li>'+
               '<li><i class="bi bi-check-circle"></i>Status : '+data.status+'</li>'+
               '<li><i class="bi bi-check-circle"></i>Hubungan Keluarga : '+data.hubungan_keluarga+'</li>'+
+              '<li><i class="bi bi-check-circle"></i>Perusahaan : '+data.ip+'</li>'+
               '<a class="btn btn-success" href="download/'+data.id+'">Download</a>'+
             '</ul>'+
           '</div>');
@@ -210,6 +211,7 @@
               '<li><i class="bi bi-check-circle"></i>Nik : '+data.nik+'</li>'+
               '<li><i class="bi bi-check-circle"></i>Status : '+data.status+'</li>'+
               '<li><i class="bi bi-check-circle"></i>Hubungan Keluarga : '+data.hubungan_keluarga+'</li>'+
+                '<li><i class="bi bi-check-circle"></i>Perusahaan : '+data.ip+'</li>'+
               '<a class="btn btn-success" href="download/'+data.id+'">Download</a>'+
             '</ul>'+
           '</div>');
