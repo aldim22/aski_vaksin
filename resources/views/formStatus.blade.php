@@ -26,10 +26,10 @@
     <div class="container-fluid status-container">
 
         <?php
-            $count1 = DB::table('detail_peserta')->where([['status_dosis', '=', 'Dosis 1'], ['status_regist', '=', '1']])->whereDate('tgl_regist', '=', '08-21-2021')->count();
-            $count2 = DB::table('detail_peserta')->where([['status_dosis', '=', 'Dosis 2'], ['status_regist', '=', '2']])->whereDate('tgl_regist', '=', '08-21-2021')->count();
-            $count3 = DB::table('detail_peserta')->where([['status_dosis', '=', 'Dosis 1'], ['status_regist', '=', '1']])->whereDate('tgl_regist', '=', '08-22-2021')->count();
-            $count4 = DB::table('detail_peserta')->where([['status_dosis', '=', 'Dosis 2'], ['status_regist', '=', '2']])->whereDate('tgl_regist', '=', '08-22-2021')->count();
+            $count1 = DB::table('detail_peserta')->where([['status_dosis', '=', 'Dosis 1'], ['status_regist', '=', '1']])->whereDate('tgl_regist', '=', '08-22-2021')->count();
+            $count2 = DB::table('detail_peserta')->where([['status_dosis', '=', 'Dosis 2'], ['status_regist', '=', '2']])->whereDate('tgl_regist', '=', '08-22-2021')->count();
+            $count3 = DB::table('detail_peserta')->where([['status_dosis', '=', 'Dosis 1'], ['status_regist', '=', '1']])->whereDate('tgl_regist', '=', '08-21-2021')->count();
+            $count4 = DB::table('detail_peserta')->where([['status_dosis', '=', 'Dosis 2'], ['status_regist', '=', '2']])->whereDate('tgl_regist', '=', '08-21-2021')->count();
             $count5 = DB::table('detail_peserta')->where('status_regist', '=', '0')->count();
         ?>
 
@@ -215,7 +215,7 @@
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="headingFive">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="true" aria-controls="collapseFive">
-                            <span>21 Agustus 2021 - 22 Agustus 2021 (Belum Registrasi) <b>[{{ $count5 }}]</b></span>
+                            <span>Belum Registrasi <b>[{{ $count5 }}]</b></span>
                         </button>
                         </h2>
                         <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#accordionExample">

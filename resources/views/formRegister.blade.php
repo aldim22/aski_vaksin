@@ -37,7 +37,7 @@
                         <?php
                             $totalP121 = DB::table('detail_peserta')->where([['status_dosis', '=', 'Dosis 1'], ['tgl_reservasi', '=', '21/Aug/21']])->count();
                             $P121 = DB::table('detail_peserta')->where([['status_dosis', '=', 'Dosis 1'], ['status_regist', '=', '1']])->whereDate('tgl_regist', '=', '08-21-2021')->count();
-                            $percent121 = round($P121 / $totalP121 * 100, 2);
+                            $percent121 = round($P121 / $totalP121 * 100, 1);
                         ?>
 
                         Dosis 1: <span><b>{{ $P121 }}</b> ({{ $percent121 }}%)</span><br>
@@ -45,7 +45,7 @@
                         <?php
                             $totalP221 = DB::table('detail_peserta')->where([['status_dosis', '=', 'Dosis 2'], ['tgl_reservasi', '=', '21/Aug/21']])->count();
                             $P221 = DB::table('detail_peserta')->where([['status_dosis', '=', 'Dosis 2'], ['status_regist', '=', '2']])->whereDate('tgl_regist', '=', '08-21-2021')->count();
-                            $percent221 = round($P221 / $totalP221 * 100, 2);
+                            $percent221 = round($P221 / $totalP221 * 100, 1);
                         ?>
 
                         Dosis 2: <span><b>{{ $P221 }}</b> ({{ $percent221 }}%)</span>
@@ -57,7 +57,7 @@
                         <?php
                             $totalP122 = DB::table('detail_peserta')->where([['status_dosis', '=', 'Dosis 1'], ['tgl_reservasi', '=', '22/Aug/21']])->count();
                             $P122 = DB::table('detail_peserta')->where([['status_dosis', '=', 'Dosis 1'], ['status_regist', '=', '1']])->whereDate('tgl_regist', '=', '08-22-2021')->count();
-                            $percent122 = round($P122 / $totalP122 * 100, 2);
+                            $percent122 = round($P122 / $totalP122 * 100, 1);
                         ?>
 
                         Dosis 1: <span><b>{{ $P122 }}</b> ({{ $percent122 }}%)</span><br>
@@ -66,7 +66,7 @@
                         <?php
                             $totalP222 = DB::table('detail_peserta')->where([['status_dosis', '=', 'Dosis 2'], ['tgl_reservasi', '=', '22/Aug/21']])->count();
                             $P222 = DB::table('detail_peserta')->where([['status_dosis', '=', 'Dosis 2'], ['status_regist', '=', '2']])->whereDate('tgl_regist', '=', '08-22-2021')->count();
-                            $percent222 = round($P222 / $totalP222 * 100, 2);
+                            $percent222 = round($P222 / $totalP222 * 100, 1);
                         ?>
 
                         Dosis 2: <span><b>{{ $P222 }}</b> ({{ $percent222 }}%)</span>

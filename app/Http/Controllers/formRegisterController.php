@@ -113,10 +113,10 @@ class formRegisterController extends Controller
     // }
 
     public function indexStatus() {
-        $satu = DB::table('detail_peserta')->where([['status_dosis', '=', 'Dosis 1'], ['status_regist', '=', '1']])->whereDate('tgl_regist', '=', '08-21-2021')->get();
-        $dua = DB::table('detail_peserta')->where([['status_dosis', '=', 'Dosis 2'], ['status_regist', '=', '2']])->whereDate('tgl_regist', '=', '08-21-2021')->get();
-        $tiga = DB::table('detail_peserta')->where([['status_dosis', '=', 'Dosis 1'], ['status_regist', '=', '1']])->whereDate('tgl_regist', '=', '08-22-2021')->get();
-        $empat = DB::table('detail_peserta')->where([['status_dosis', '=', 'Dosis 2'], ['status_regist', '=', '2']])->whereDate('tgl_regist', '=', '08-22-2021')->get();
+        $satu = DB::table('detail_peserta')->where([['status_dosis', '=', 'Dosis 1'], ['status_regist', '=', '1']])->whereDate('tgl_regist', '=', '08-22-2021')->get();
+        $dua = DB::table('detail_peserta')->where([['status_dosis', '=', 'Dosis 2'], ['status_regist', '=', '2']])->whereDate('tgl_regist', '=', '08-22-2021')->get();
+        $tiga = DB::table('detail_peserta')->where([['status_dosis', '=', 'Dosis 1'], ['status_regist', '=', '1']])->whereDate('tgl_regist', '=', '08-21-2021')->get();
+        $empat = DB::table('detail_peserta')->where([['status_dosis', '=', 'Dosis 2'], ['status_regist', '=', '2']])->whereDate('tgl_regist', '=', '08-21-2021')->get();
         $lima = DB::table('detail_peserta')->where('status_regist', '=', '0')->get();;
 
         return view('formStatus', ['satu' => $satu, 'dua' => $dua, 'tiga' => $tiga, 'empat' => $empat, 'lima' => $lima]);
@@ -129,7 +129,7 @@ class formRegisterController extends Controller
     public function percentP() {
         $total = DB::table('detail_peserta')->count();
         $totalP = DB::table('detail_peserta')->where('status_regist', '=', '1')->orWhere('status_regist', '=', '2')->count();
-        $percentP = round($totalP / $total * 100, 2);
+        $percentP = round($totalP / $total * 100, 1);
 
         echo $percentP;
     }
